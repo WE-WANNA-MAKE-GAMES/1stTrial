@@ -6,6 +6,7 @@
 * fix/〇〇
 
 ##Commit
+Folloings are some example
 * feat: プレイヤー移動を追加
 * fix: ジャンプバグ修正
 * refactor: EnemyManagerを整理
