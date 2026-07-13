@@ -2,8 +2,9 @@
 
 ##Branch
 * main
-* feature/〇〇
-* fix/〇〇
+* develop
+* feature/〇〇 (人名)
+* 各々のfeature/〇〇内で作業し、できたものをdevelopにpull request
 
 ##Commit
 Folloings are some example
