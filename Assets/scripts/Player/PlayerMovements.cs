@@ -36,13 +36,4 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = moveInput.normalized * moveSpeed;
     }
-    private void LateUpdate()
-{
-    Vector3 pos = transform.position;
-
-    pos.x = Mathf.Clamp(pos.x, -8.5f, 8.5f);
-    pos.y = Mathf.Clamp(pos.y, -4.5f, 4.5f);
-
-    transform.position = pos;
-}
 }
