@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb36dc8b3d4c74cb19a5583143828061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
+  moveSpeed: 8
 --- !u!114 &83187499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,6 +626,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefab: {fileID: 4284833698410674100, guid: 5c088b3fa408c4f14b0db852187ed106, type: 3}
   spawnInterval: 2
+  minY: -4
+  maxY: 4
+  player: {fileID: 83187493}
+  spawnOffsetX: 5
 --- !u!4 &811014908
 Transform:
   m_ObjectHideFlags: 0

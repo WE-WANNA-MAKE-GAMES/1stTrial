@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3987988979064786291}
   - component: {fileID: 566053940940502711}
   - component: {fileID: 2247080363435479788}
+  - component: {fileID: 7341909332580750190}
+  - component: {fileID: -7887185206859027010}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -180,4 +182,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad1c1720322a48a6807244d99dff9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  moveSpeed: 8
+  moveSpeed: 4
+--- !u!114 &7341909332580750190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284833698410674100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff9448f811eb447dbadf80f7d0c4b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHP: 3
+--- !u!114 &-7887185206859027010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284833698410674100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1498725b279bb4b07ac377a0f5f1164c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyEffect
+  explosionPrefab: {fileID: 3706289601320125170, guid: e29344cc0505d4be5ba6e361534bfbc3, type: 3}
