@@ -53,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player has died.");  // Debug log to indicate that the player has died. Should be deleted at launch.
+        GameManager.Instance.GameOver();  // Call the GameOver method from the GameManager to handle game over logic
         Destroy(gameObject);  // Destroy the player game object
     }
 }
