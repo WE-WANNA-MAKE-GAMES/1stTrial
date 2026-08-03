@@ -6,6 +6,13 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject gameClearPanel;
+
+    private void Start()
+    {
+        gameOverPanel.SetActive(false);
+        gameClearPanel.SetActive(false);
+    }
 
     private void Awake()
     {
@@ -24,6 +31,14 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over");
         Time.timeScale = 0f;
         gameOverPanel.SetActive(true);
+    }
+
+    //* ゲームクリア処理
+    public void GameClear()
+    {
+        Debug.Log("Game Clear");
+        Time.timeScale = 0f;
+        gameClearPanel.SetActive(true);
     }
     //* ゲームオーバー後のリトライ処理
     public void Retry()

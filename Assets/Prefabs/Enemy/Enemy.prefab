@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7341909332580750190}
   - component: {fileID: -7887185206859027010}
   - component: {fileID: 1947295320865965493}
+  - component: {fileID: 6244944978952059567}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -224,6 +225,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
   damage: 1
+--- !u!114 &6244944978952059567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284833698410674100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8209dce91b4420d829f6d82532ebc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockback
+  knockbackPower: 5
+  knockbackTime: 0.1
 --- !u!1 &5677481757320049447
 GameObject:
   m_ObjectHideFlags: 0

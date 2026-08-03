@@ -9,12 +9,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float invincibleTime = 2f; // Duration of invincibility after taking damage
     private bool isInvincible = false; // Flag to track if the player is currently invincible
     private PlayerInvincibleEffect playerEffect; // Reference to the PlayerInvincibleEffect script for visual feedback
-
+    private PlayerKnockback playerKnockback; // Reference to the PlayerKnockback script for knockback effect
     //--------------------------------------------------------------------------------------------------------------------------------------------
     //* プレーヤーエフェクトの取得
     private void Awake()
     {
         playerEffect = GetComponent<PlayerInvincibleEffect>();
+        playerKnockback = GetComponent<PlayerKnockback>();
     }
     //* プレイヤーのHP初期化処理
     private void Start()
@@ -22,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         currentHP = maxHP;  // Initialize current health to maximum health at the start
     }
     // * プレイヤーがダメージを受けたときの処理
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Transform attacker)
     {
         if (isInvincible)
         {
@@ -30,6 +31,11 @@ public class PlayerHealth : MonoBehaviour
         }
 
         currentHP -= damage;    // Reduce current health by the damage amount
+
+        Vector2 direction =
+            (transform.position - attacker.position).normalized;  // Calculate the direction from the attacker to the player()
+
+        playerKnockback.Knockback(direction);  // Apply knockback effect to the player in the calculated direction
 
         StartCoroutine(InvincibleTime());  // Start the invincibility coroutine after taking damage
 
