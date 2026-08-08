@@ -549,6 +549,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &462159215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 462159217}
+  - component: {fileID: 462159218}
+  m_Layer: 0
+  m_Name: 'MacrophageSpawner '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &462159217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462159215}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &462159218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462159215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5073d63a55872743a246946f7dc06aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MacrophageSpawner
+  macrophagePrefab: {fileID: 4284833698410674100, guid: c0d5ae0d3ef21fd448083fa8854aa429, type: 3}
+  spawnInterval: 2.3
+  minY: -4
+  maxY: 4
+  player: {fileID: 1608878012}
+  spawnOffsetX: 5
 --- !u!1 &811014906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,6 +1492,7 @@ SceneRoots:
   - {fileID: 1409523512}
   - {fileID: 2124783986}
   - {fileID: 811014908}
+  - {fileID: 462159217}
   - {fileID: 1215665315}
   - {fileID: 1213148905}
   - {fileID: 959189068007552136}
