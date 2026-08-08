@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4556132129192070086}
   - component: {fileID: 6526516063654797669}
   - component: {fileID: 91959782372818426}
-  - component: {fileID: -3417107420649461571}
+  - component: {fileID: 3326047256165020842}
   m_Layer: 0
-  m_Name: Bullet
-  m_TagString: Untagged
+  m_Name: MacrophageBullet
+  m_TagString: MacrophageBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2281426465453337523, guid: 6718662002c514fc493944fab7db9994, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.009433806, g: 0.34632152, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -168,7 +168,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.028702306, y: 0.03}
   m_EdgeRadius: 0
---- !u!114 &-3417107420649461571
+--- !u!114 &3326047256165020842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1274868487419933144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebc2e8eb870ac4c4e8baa79885f866a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ee3eca19b8238c4c961e440627c9f53, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  speed: 15
+  m_EditorClassIdentifier: Assembly-CSharp::MacrophageBullet
+  speed: -10

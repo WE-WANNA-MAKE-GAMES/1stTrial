@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class PlayerBullet : MonoBehaviour
 {
     public float speed = 15f;   // Speed at which the bullet moves
     void Update()
@@ -22,6 +22,11 @@ public class Bullet : MonoBehaviour
                 enemyHealth.TakeDamage(1); // Deal 1 damage to the enemy
             }
             Destroy(gameObject);
+        }
+        else if(other.CompareTag("Bullet"))  // Check if the bullet collides with another bullet
+        {
+            Destroy(other.gameObject); // Destroy the bullet
+            Destroy(gameObject); // Destroy this bullet as well
         }
     }
 }
