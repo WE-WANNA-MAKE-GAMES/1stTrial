@@ -180,4 +180,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee3eca19b8238c4c961e440627c9f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MacrophageBullet
-  speed: -10
+  speed: -8
