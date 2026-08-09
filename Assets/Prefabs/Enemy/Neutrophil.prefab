@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1947295320865965493}
   - component: {fileID: 6244944978952059567}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Neutrophil
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

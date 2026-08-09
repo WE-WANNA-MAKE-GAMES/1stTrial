@@ -1250,6 +1250,10 @@ PrefabInstance:
       propertyPath: cameraScroll
       value: 
       objectReference: {fileID: 64842508}
+    - target: {fileID: 633065925928406148, guid: 680b49794842d492c8ba94f98e3236bb, type: 3}
+      propertyPath: maxHP
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4507696500485845030, guid: 680b49794842d492c8ba94f98e3236bb, type: 3}
       propertyPath: m_Name
       value: Player
