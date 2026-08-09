@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5b7475ca40aa95d4c96dd954412e1653
+guid: 3070fbef3c2f005478ab775feea41c53
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2633166788010294455
-    second: RedBloodCells.png_0
+      213: 8596640243658272642
+    second: Enemy_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RedBloodCells.png_0
+      name: Enemy_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1254
-        height: 1254
+        x: 10
+        y: 8
+        width: 111
+        height: 113
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7bcb5b91e33ea8420800000000000000
-      internalID: 2633166788010294455
+      spriteID: 28f241131c66d4770800000000000000
+      internalID: 8596640243658272642
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      RedBloodCells.png_0: 2633166788010294455
+      Enemy_0: 8596640243658272642
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
