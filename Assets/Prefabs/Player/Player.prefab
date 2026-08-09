@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 9066527463647415395}
   - component: {fileID: 7133223026250145608}
   - component: {fileID: 7630033193625869350}
+  - component: {fileID: 4980230715341754123}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -140,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb64fff4637634b04a2d0edcbceeb07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHP: 2
+  maxHP: 10
   invincibleTime: 1
 --- !u!114 &40093172839946953
 MonoBehaviour:
@@ -155,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovements
   moveSpeed: 10
+  cameraScroll: {fileID: 0}
 --- !u!114 &9066527463647415395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,8 +196,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f5aebc4368647aaa67acff136eddd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerKnockback
-  knockbackPower: 8
+  knockbackPower: 5
   knockbackTime: 0.15
+--- !u!114 &4980230715341754123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4507696500485845030}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c489b2451d9f424cb7e2c11cffcd9ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDisabledEffect
+  whiteAmount: 0.5
 --- !u!1 &6577496905547297996
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +223,7 @@ GameObject:
   - component: {fileID: 1903129554903127914}
   m_Layer: 0
   m_Name: BodyCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovements : MonoBehaviour
@@ -10,13 +11,20 @@ public class PlayerMovements : MonoBehaviour
     private Vector2 moveInput;
     private PlayerKnockback playerKnockback;
 
+    private bool isDisabled = false;
+    private PlayerInvincibleEffect playerInvincibleEffect;
+    private PlayerDisabledEffect playerDisabledEffect;
+    private PlayerHealth playerHealth;
     [SerializeField] private CameraScroll cameraScroll;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         controls = new PlayerControls();
         playerKnockback = GetComponent<PlayerKnockback>();
+        playerHealth = GetComponent<PlayerHealth>();
+        playerDisabledEffect = GetComponent<PlayerDisabledEffect>();
     }
 
     private void OnEnable()
@@ -36,7 +44,7 @@ public class PlayerMovements : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerKnockback.IsKnockback)
+        if (playerKnockback.IsKnockback || isDisabled)
         {
             return; // Skip movement if the player is being knocked back
         }
@@ -56,5 +64,22 @@ public class PlayerMovements : MonoBehaviour
         viewPos.y = Mathf.Clamp(viewPos.y, 0.05f, 0.95f);
 
         rb.position = cam.ViewportToWorldPoint(viewPos);
+    }
+
+    public void SetDisabled(float duration)
+    {
+        StartCoroutine(DisableMovement(duration));
+    }
+
+    private IEnumerator DisableMovement(float duration)
+    {
+        isDisabled = true;
+
+        rb.linearVelocity =
+            new Vector2(cameraScroll.ScrollSpeed, 0f);
+
+        yield return new WaitForSeconds(duration);
+
+        isDisabled = false;
     }
 }

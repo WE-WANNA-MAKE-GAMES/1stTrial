@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerKnockback : MonoBehaviour
 {
-    [SerializeField] private float knockbackPower = 8f;
+    [SerializeField] private float knockbackPower = 5f;
     [SerializeField] private float knockbackTime = 0.15f;
     private Rigidbody2D rb;
     public bool IsKnockback { get; private set; }
