@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -7887185206859027010}
   - component: {fileID: 1947295320865965493}
   - component: {fileID: 6244944978952059567}
+  - component: {fileID: 7614501083572053217}
   m_Layer: 0
   m_Name: Neutrophil
   m_TagString: Enemy
@@ -239,6 +240,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockback
   knockbackPower: 5
   knockbackTime: 0.1
+--- !u!114 &7614501083572053217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284833698410674100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e80b8d72821e468ab4c43c2cca28d6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NeutrophilShoot
+  bulletPrefab: {fileID: 4343282088079593075, guid: 86593efa4d2cb45f8b3917de5db431d0, type: 3}
+  firePoint: {fileID: 2779359165131347823}
+  fireInterval: 1
 --- !u!1 &5677481757320049447
 GameObject:
   m_ObjectHideFlags: 0
