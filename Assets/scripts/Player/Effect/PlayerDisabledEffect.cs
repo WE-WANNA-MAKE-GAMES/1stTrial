@@ -1,8 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-public class PlayerInvincibleEffect : MonoBehaviour
+public class PlayerDisabledEffect : MonoBehaviour
 {
+    [SerializeField]
+    private float whiteAmount = 0.5f;
+
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
 
@@ -10,34 +13,6 @@ public class PlayerInvincibleEffect : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
-    }
-
-    public void PlayInvincibleEffect(float duration)
-    {
-        StartCoroutine(InvincibleFlash(duration));
-    }
-
-    private IEnumerator InvincibleFlash(float duration)
-    {
-        float timer = 0f;
-
-        while (timer < duration)
-        {
-            Color color = originalColor;
-            color.a = 0.3f;
-
-            spriteRenderer.color = color;
-
-            yield return new WaitForSeconds(0.05f);
-
-            spriteRenderer.color = originalColor;
-
-            yield return new WaitForSeconds(0.05f);
-
-            timer += 0.2f;
-        }
-
-        spriteRenderer.color = originalColor;
     }
 
     public void PlayDisabledEffect(float duration)
@@ -50,7 +25,7 @@ public class PlayerInvincibleEffect : MonoBehaviour
         Color disabledColor = Color.Lerp(
             originalColor,
             Color.white,
-            0.5f
+            whiteAmount
         );
 
         spriteRenderer.color = disabledColor;

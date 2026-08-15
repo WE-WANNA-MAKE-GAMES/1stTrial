@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     private int currentHP;  // Current health points of the player
 
     [SerializeField] private float invincibleTime = 2f; // Duration of invincibility after taking damage
+    public float InvincibleTimeNum => invincibleTime;
     private bool isInvincible = false; // Flag to track if the player is currently invincible
     private PlayerInvincibleEffect playerEffect; // Reference to the PlayerInvincibleEffect script for visual feedback
     private PlayerKnockback playerKnockback; // Reference to the PlayerKnockback script for knockback effect
