@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67fcd19960b004ee79230209443e1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Nets
-  speed: -8
+  speed: -4
   disabledTime: 0.5
   destroyDistance: 15
 --- !u!61 &-2004117312966174712
