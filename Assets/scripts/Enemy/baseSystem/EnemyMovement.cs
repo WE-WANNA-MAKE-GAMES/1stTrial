@@ -1,26 +1,34 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 5f;
 
-    private Rigidbody2D rb;
-    private EnemyKnockback knockback;
+    private CameraScroll cameraScroll;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        knockback = GetComponent<EnemyKnockback>();
+        cameraScroll = Camera.main.GetComponent<CameraScroll>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        // ノックバック中は通常移動しない
-        if (knockback != null && knockback.IsKnockback)
+        if (cameraScroll == null)
+        {
             return;
+        }
 
-        rb.linearVelocity = Vector2.left * moveSpeed;
+        float currentSpeed = moveSpeed;
+
+        // カメラがスクロールしている間だけ
+        // スクロール分を敵の移動速度に加える
+        if (cameraScroll.IsAtStageEnd)
+        {
+            currentSpeed += cameraScroll.ScrollSpeed;
+        }
+
+        transform.position +=
+            Vector3.left * currentSpeed * Time.deltaTime;
     }
 }
