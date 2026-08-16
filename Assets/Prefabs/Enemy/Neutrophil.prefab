@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad1c1720322a48a6807244d99dff9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  moveSpeed: 1
+  moveSpeed: 2
 --- !u!114 &7341909332580750190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,7 +270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NeutrophilShootNETs
   bulletPrefab: {fileID: 3532600685029094407, guid: 74dadc72b3dfc4683bbeebd447a5360f, type: 3}
   firePoint: {fileID: 2779359165131347823}
-  fireInterval: 1.5
+  fireInterval: 2
 --- !u!1 &5677481757320049447
 GameObject:
   m_ObjectHideFlags: 0
