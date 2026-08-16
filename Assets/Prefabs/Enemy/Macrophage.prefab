@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2779359165131347823}
   - component: {fileID: 5861144545225188320}
-  - component: {fileID: 3987988979064786291}
+  - component: {fileID: 97487011827781425}
+  - component: {fileID: 6731633104144208708}
   - component: {fileID: 566053940940502711}
   - component: {fileID: 2247080363435479788}
   - component: {fileID: 7341909332580750190}
@@ -90,8 +91,8 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.19215684, g: 0.8, b: 0.31806302, a: 1}
+  m_Sprite: {fileID: -493354895, guid: f67de819250424843aa9587598050611, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -101,8 +102,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!61 &3987988979064786291
-BoxCollider2D:
+--- !u!58 &97487011827781425
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,22 +132,49 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.08597374, y: 0.005210638}
+  m_Radius: 0.7265323
+--- !u!70 &6731633104144208708
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284833698410674100}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.26834354, y: 0.03907919}
+  m_Size: {x: 1.0466412, y: 1.4530646}
+  m_Direction: 0
 --- !u!50 &566053940940502711
 Rigidbody2D:
   serializedVersion: 5
@@ -254,7 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MacrophageShoot
   bulletPrefab: {fileID: 1274868487419933144, guid: 216c32c9bfad87e418a69c273bf930f5, type: 3}
   firePoint: {fileID: 2779359165131347823}
-  fireInterval: 0.75
+  fireInterval: 1
 --- !u!1 &5677481757320049447
 GameObject:
   m_ObjectHideFlags: 0
