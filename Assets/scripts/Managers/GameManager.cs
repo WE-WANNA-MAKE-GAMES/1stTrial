@@ -25,7 +25,9 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    //*==========================
     //* ゲームオーバー処理
+    //*==========================
     public void GameOver()
     {
         Debug.Log("Game Over");
@@ -33,21 +35,28 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(true);
     }
 
+    //*==========================
     //* ゲームクリア処理
+    //*==========================
     public void GameClear()
     {
         Debug.Log("Game Clear");
         Time.timeScale = 0f;
         gameClearPanel.SetActive(true);
     }
+
+    //*==========================
     //* ゲームオーバー後のリトライ処理
+    //*==========================
     public void Retry()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Scene1"); //Scene1に戻る
+        SceneManager.LoadScene("Stage2"); //!Stage2に戻る
     }
 
+    //*=======================================
     //* ゲームオーバー後のタイトル画面に戻る処理
+    //*=======================================
     public void BackToTitle()
     {
         Time.timeScale = 1f;
