@@ -46,12 +46,20 @@ public class PlayerMovements : MonoBehaviour
     {
         if (playerKnockback.IsKnockback || isDisabled)
         {
-            return; // Skip movement if the player is being knocked back
+            return;
         }
+
         Vector2 playerVelocity = moveInput.normalized * moveSpeed;
-        playerVelocity.x += cameraScroll.ScrollSpeed; // プレイヤーの入力に依存した速度にカメラスピードを加える
+
+        // カメラがスクロールしている間だけ、
+        // プレイヤーにもステージの移動速度を加える
+        if (!cameraScroll.IsAtStageEnd)
+        {
+            playerVelocity.x += cameraScroll.ScrollSpeed;
+        }
 
         rb.linearVelocity = playerVelocity;
+
         ClampToCamera();
     }
     private void ClampToCamera()

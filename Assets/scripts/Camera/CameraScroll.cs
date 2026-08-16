@@ -2,8 +2,34 @@ using UnityEngine;
 
 public class CameraScroll : MonoBehaviour
 {
-    [SerializeField] private float scrollSpeed = 3f;    //カメラのスクロール速度
+    [SerializeField]
+    private float scrollSpeed = 3f;
+
+    [SerializeField]
+    private BoxCollider2D stageBounds;
+
     public float ScrollSpeed => scrollSpeed;
+
+    public bool IsAtStageEnd { get; private set; }
+
+    private float stageRightX;
+
+    private void Awake()
+    {
+        Camera cam = GetComponent<Camera>();
+
+        if (stageBounds == null)
+        {
+            Debug.LogError("Stage Bounds is not assigned.");
+            return;
+        }
+
+        float cameraHalfWidth =
+            cam.orthographicSize * cam.aspect;
+
+        stageRightX =
+            stageBounds.bounds.max.x - cameraHalfWidth;
+    }
 
     private void FixedUpdate()
     {
@@ -12,7 +38,25 @@ public class CameraScroll : MonoBehaviour
 
     private void Scroll()
     {
-        //カメラのスクロール
-        transform.position += Vector3.right * scrollSpeed * Time.deltaTime;
+        if (IsAtStageEnd)
+        {
+            return;
+        }
+
+        float nextX =
+            transform.position.x +
+            scrollSpeed * Time.fixedDeltaTime;
+
+        if (nextX >= stageRightX)
+        {
+            nextX = stageRightX;
+            IsAtStageEnd = true;
+        }
+
+        transform.position = new Vector3(
+            nextX,
+            transform.position.y,
+            transform.position.z
+        );
     }
 }
