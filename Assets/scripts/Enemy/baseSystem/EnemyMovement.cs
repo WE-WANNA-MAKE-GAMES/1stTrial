@@ -4,6 +4,7 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
     private float moveSpeed = 5f;
+    [SerializeField] float destroyDistance = 10f;
 
     private CameraScroll cameraScroll;
 
@@ -30,5 +31,11 @@ public class EnemyMovement : MonoBehaviour
 
         transform.position +=
             Vector3.left * currentSpeed * Time.deltaTime;
+
+        // Destroy bullets when they become invisible
+        if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
+        {
+            Destroy(gameObject);
+        }
     }
 }
