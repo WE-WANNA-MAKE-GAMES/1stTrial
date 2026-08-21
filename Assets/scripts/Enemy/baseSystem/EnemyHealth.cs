@@ -20,7 +20,10 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHP -= damage;    // Reduce current health by the damage amount
-        knockback.Knockback(Vector2.right);  // Apply knockback effect to the
+        if (knockback != null && knockback.isActiveAndEnabled)
+{
+    knockback.Knockback(Vector2.right);
+} // Apply knockback effect to the
         enemyEffect.PlayDamageFlash();  // Trigger the damage flash effect when the enemy takes damage
         Debug.Log("Enemy took damage. Current HP: " + currentHP);   // Debug log to check the current HP after taking damage. Should be deleted at launch.
         if (currentHP <= 0)
