@@ -6,12 +6,11 @@ public class Nets : MonoBehaviour
     [SerializeField] private float disabledTime = 1f;
     [SerializeField] private float destroyDistance = 15f;
 
-    private void Update()
+    void Update()
     {
-        transform.position += Vector3.right * speed * Time.deltaTime;
+        transform.localPosition += Vector3.right * speed * Time.deltaTime;
 
-        if (transform.position.x <
-            Camera.main.transform.position.x - destroyDistance)
+        if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
             Destroy(gameObject);
         }

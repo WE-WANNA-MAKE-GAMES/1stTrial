@@ -8,9 +8,8 @@ public class NeutrophilBullet : MonoBehaviour
     [SerializeField] float destroyDistance = 15f;
     void Update()
     {
-        transform.position += Vector3.right * speed * Time.deltaTime;   // Move the bullet to the right at the specified speed
+        transform.localPosition += Vector3.right * speed * Time.deltaTime;
 
-        // Destroy bullets when they become invisible
         if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
             Destroy(gameObject);
