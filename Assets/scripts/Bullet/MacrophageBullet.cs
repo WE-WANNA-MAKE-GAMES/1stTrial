@@ -16,9 +16,8 @@ public class MacrophageBullet : MonoBehaviour
 
     void Update()
     {
-        transform.position += (Vector3)(direction * speed * Time.deltaTime);
+        transform.localPosition += (Vector3)(direction * speed * Time.deltaTime);
 
-        // Destroy bullets when they become invisible
         if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
             Destroy(gameObject);
