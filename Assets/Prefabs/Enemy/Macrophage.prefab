@@ -215,6 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   moveSpeed: 1
+  destroyDistance: 10
 --- !u!114 &7341909332580750190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MacrophageShoot
   bulletPrefab: {fileID: 1274868487419933144, guid: 216c32c9bfad87e418a69c273bf930f5, type: 3}
   firePoint: {fileID: 2779359165131347823}
+  player: {fileID: 0}
   fireInterval: 1.5
 --- !u!1 &5677481757320049447
 GameObject:

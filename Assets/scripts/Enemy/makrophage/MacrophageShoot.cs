@@ -4,9 +4,22 @@ public class MacrophageShoot : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform player;
 
     [SerializeField] private float fireInterval = 0.2f;
     private float timer = 0f;
+
+    private void Awake()
+    {
+        if (player == null)
+        {
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject != null)
+            {
+                player = playerObject.transform;
+            }
+        }
+    }
 
 /*Macrophageには必要ない？
     private PlayerControls controls;
@@ -35,11 +48,18 @@ public class MacrophageShoot : MonoBehaviour
         {
             timer = 0f;
 
-            Instantiate(
+            GameObject bulletObject = Instantiate(
                 bulletPrefab,
                 firePoint.position,
                 Quaternion.identity
             );
+
+            if (player != null)
+            {
+                Vector2 direction =
+                    (player.position - firePoint.position).normalized;
+                bulletObject.GetComponent<MacrophageBullet>().SetDirection(direction);
+            }
         }
     }
 }
