@@ -1,16 +1,17 @@
 using UnityEngine;
 
-public class MacrophageShoot : MonoBehaviour
+public class BossNetAttack : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject netPrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private float fireInterval = 0.2f;
+    [SerializeField] private float fireInterval = 4f;
+    [SerializeField] private float netScale = 3f;
 
     private float timer;
 
     private void Update()
     {
-        // 画面外の敵は攻撃しない
+        // Bossが画面外なら攻撃しない
         if (!IsOnScreen())
         {
             timer = 0f;
@@ -24,11 +25,13 @@ public class MacrophageShoot : MonoBehaviour
 
         timer = 0f;
 
-        Instantiate(
-            bulletPrefab,
-            firePoint.position,
+        GameObject net = Instantiate(
+            netPrefab,
+            firePoint != null ? firePoint.position : transform.position,
             Quaternion.identity
         );
+
+        net.transform.localScale *= netScale;
     }
 
     private bool IsOnScreen()
