@@ -7,6 +7,7 @@ public class MacrophageShoot : MonoBehaviour
     [SerializeField] private Transform player;
 
     [SerializeField] private float fireInterval = 0.2f;
+    private Transform scrollRoot;
     private float timer = 0f;
 
     private void Awake()
@@ -18,27 +19,32 @@ public class MacrophageShoot : MonoBehaviour
             {
                 player = playerObject.transform;
             }
+        };
+        GameObject scrollRootObject = GameObject.FindGameObjectWithTag("ScrollRoot");
+        if (scrollRootObject != null)
+        {
+            scrollRoot = scrollRootObject.transform;
         }
     }
 
-/*Macrophageには必要ない？
-    private PlayerControls controls;
+    /*Macrophageには必要ない？
+        private PlayerControls controls;
 
-    private void Awake()
-    {
-        controls = new PlayerControls();
-    }
+        private void Awake()
+        {
+            controls = new PlayerControls();
+        }
 
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
+        private void OnEnable()
+        {
+            controls.Enable();
+        }
 
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
-*/
+        private void OnDisable()
+        {
+            controls.Disable();
+        }
+    */
     private void Update()
     {
         timer += Time.deltaTime;
@@ -51,7 +57,8 @@ public class MacrophageShoot : MonoBehaviour
             GameObject bulletObject = Instantiate(
                 bulletPrefab,
                 firePoint.position,
-                Quaternion.identity
+                Quaternion.identity,
+                scrollRoot
             );
 
             if (player != null)

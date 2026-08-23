@@ -138,8 +138,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.08597374, y: 0.005210638}
-  m_Radius: 0.7265323
+  m_Offset: {x: 0.08021673, y: 0}
+  m_Radius: 0.70085526
 --- !u!70 &6731633104144208708
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ CapsuleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4284833698410674100}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   moveSpeed: 1
+  destroyDistance: 10
 --- !u!114 &7341909332580750190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,14 +278,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4284833698410674100}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cef552d0bb52244f8664d1c5eada3c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MacrophageShoot
   bulletPrefab: {fileID: 1274868487419933144, guid: 216c32c9bfad87e418a69c273bf930f5, type: 3}
   firePoint: {fileID: 2779359165131347823}
+  player: {fileID: 0}
   fireInterval: 1.5
+  scrollRoot: {fileID: 0}
 --- !u!114 &6695341651367805429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6433484b6fa71d046b86533510b56431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossClear
+  clearDelay: 1.5
 --- !u!114 &8948253105066604046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossNetAttack
   netPrefab: {fileID: 3532600685029094407, guid: 74dadc72b3dfc4683bbeebd447a5360f, type: 3}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 2779359165131347823}
   fireInterval: 4
   netScale: 3
 --- !u!1 &5677481757320049447

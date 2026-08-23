@@ -257,6 +257,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 4343282088079593075, guid: 86593efa4d2cb45f8b3917de5db431d0, type: 3}
   firePoint: {fileID: 2779359165131347823}
   fireInterval: 2
+  scrollRoot: {fileID: 0}
 --- !u!114 &-2355525907944814657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +273,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3532600685029094407, guid: 74dadc72b3dfc4683bbeebd447a5360f, type: 3}
   firePoint: {fileID: 2779359165131347823}
   fireInterval: 2
+  scrollRoot: {fileID: 0}
 --- !u!1 &5677481757320049447
 GameObject:
   m_ObjectHideFlags: 0

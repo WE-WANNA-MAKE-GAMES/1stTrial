@@ -8,6 +8,9 @@ TagManager:
   - PlayerDamageReceiver
   - EnemyDamageArea
   - Bullet
+  - MacrophageBullet
+  - NETs
+  - ScrollRoot
   layers:
   - Default
   - TransparentFX

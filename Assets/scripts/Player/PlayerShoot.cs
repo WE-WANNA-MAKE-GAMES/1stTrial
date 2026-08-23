@@ -6,6 +6,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private Transform firePoint;
 
     [SerializeField] private float fireInterval = 0.2f;
+    private Transform scrollRoot;
     private float timer = 0f;
 
     private PlayerControls controls;
@@ -13,6 +14,11 @@ public class PlayerShoot : MonoBehaviour
     private void Awake()
     {
         controls = new PlayerControls();
+        GameObject scrollRootObject = GameObject.FindGameObjectWithTag("ScrollRoot");
+        if (scrollRootObject != null)
+        {
+            scrollRoot = scrollRootObject.transform;
+        }
     }
 
     private void OnEnable()
@@ -37,7 +43,8 @@ public class PlayerShoot : MonoBehaviour
             Instantiate(
                 bulletPrefab,
                 firePoint.position,
-                Quaternion.identity
+                Quaternion.identity,
+                scrollRoot
             );
         }
     }

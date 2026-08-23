@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 521000717}
   m_Layer: 0
   m_Name: ScrollRoot
-  m_TagString: Untagged
+  m_TagString: ScrollRoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -626,16 +626,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1006258249049579505, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1608878012}
+    - target: {fileID: -1006258249049579505, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1006258249049579505, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
+      propertyPath: scrollRoot
+      value: 
+      objectReference: {fileID: 521000717}
     - target: {fileID: 97487011827781425, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: m_Radius
       value: 0.70085526
-      objectReference: {fileID: 0}
-    - target: {fileID: 97487011827781425, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 97487011827781425, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: m_Offset.x
@@ -644,10 +648,6 @@ PrefabInstance:
     - target: {fileID: 97487011827781425, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: m_Offset.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2779359165131347823, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2779359165131347823, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: m_LocalPosition.x
@@ -693,14 +693,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 5861144545225188320, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6731633104144208708, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8948253105066604046, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 1524827994}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1047,6 +1047,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4284833698410674100, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
   m_PrefabInstance: {fileID: 967298213}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1524827994 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2779359165131347823, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
+  m_PrefabInstance: {fileID: 967298213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1608878012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7391874141505588188, guid: 680b49794842d492c8ba94f98e3236bb, type: 3}
@@ -1272,6 +1277,10 @@ PrefabInstance:
       propertyPath: spawnInterval
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5140863622565719147, guid: a9f18ca58823a4546b2632d6684f68f9, type: 3}
+      propertyPath: macrophagePrefab
+      value: 
+      objectReference: {fileID: 5584317068948115328, guid: e8e769ea18de74149853bd95b678d664, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
