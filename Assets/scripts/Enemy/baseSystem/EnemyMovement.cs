@@ -2,33 +2,17 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float moveSpeed = 5f;
-
-    private CameraScroll cameraScroll;
-
-    private void Awake()
-    {
-        cameraScroll = Camera.main.GetComponent<CameraScroll>();
-    }
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] float destroyDistance = 10f;
 
     private void Update()
     {
-        if (cameraScroll == null)
+        transform.localPosition += Vector3.left * moveSpeed * Time.deltaTime;
+
+        // Destroy when off-screen (world座標で判定するのでここは変更なし)
+        if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
-            return;
+            Destroy(gameObject);
         }
-
-        float currentSpeed = moveSpeed;
-
-        // カメラがスクロールしている間だけ
-        // スクロール分を敵の移動速度に加える
-        if (cameraScroll.IsAtStageEnd)
-        {
-            currentSpeed += cameraScroll.ScrollSpeed;
-        }
-
-        transform.position +=
-            Vector3.left * currentSpeed * Time.deltaTime;
     }
 }
