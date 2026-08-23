@@ -7,7 +7,6 @@ public class MacrophageShoot : MonoBehaviour
     [SerializeField] private Transform player;
 
     [SerializeField] private float fireInterval = 0.2f;
-    private float timer = 0f;
 
     private void Awake()
     {
@@ -24,29 +23,32 @@ public class MacrophageShoot : MonoBehaviour
 /*Macrophageには必要ない？
     private PlayerControls controls;
 
-    private void Awake()
-    {
-        controls = new PlayerControls();
-    }
-
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
-*/
     private void Update()
     {
-        timer += Time.deltaTime;
-
-        if (/*controls.Player.Shoot.IsPressed() && これもMacrophageに必要なし*/
-            timer >= fireInterval)
+        // 画面外の敵は攻撃しない
+        if (!IsOnScreen())
         {
             timer = 0f;
+            return;
+        }
+
+        timer += Time.deltaTime;
+
+        if (timer < fireInterval)
+            return;
+
+        timer = 0f;
+
+        Instantiate(
+            bulletPrefab,
+            firePoint.position,
+            Quaternion.identity
+        );
+    }
+
+    private bool IsOnScreen()
+    {
+        Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
 
             GameObject bulletObject = Instantiate(
                 bulletPrefab,
