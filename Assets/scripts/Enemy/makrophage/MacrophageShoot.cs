@@ -4,39 +4,62 @@ public class MacrophageShoot : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform player;
+
     [SerializeField] private float fireInterval = 0.2f;
+    private float timer = 0f;
 
-    private float timer;
-
-    private void Update()
+    private void Awake()
     {
-        // 画面外の敵は攻撃しない
-        if (!IsOnScreen())
+        if (player == null)
         {
-            timer = 0f;
-            return;
+            GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+            if (playerObject != null)
+            {
+                player = playerObject.transform;
+            }
         }
-
-        timer += Time.deltaTime;
-
-        if (timer < fireInterval)
-            return;
-
-        timer = 0f;
-
-        Instantiate(
-            bulletPrefab,
-            firePoint.position,
-            Quaternion.identity
-        );
     }
 
-    private bool IsOnScreen()
-    {
-        Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
+/*Macrophageには必要ない？
+    private PlayerControls controls;
 
-        return position.z > 0f &&
-               position.x >= 0f && position.x <= 1f &&
-               position.y >= 0f && position.y <= 1f;
+    private void Awake()
+    {
+        controls = new PlayerControls();
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
+*/
+    private void Update()
+    {
+        timer += Time.deltaTime;
+
+        if (/*controls.Player.Shoot.IsPressed() && これもMacrophageに必要なし*/
+            timer >= fireInterval)
+        {
+            timer = 0f;
+
+            GameObject bulletObject = Instantiate(
+                bulletPrefab,
+                firePoint.position,
+                Quaternion.identity
+            );
+
+            if (player != null)
+            {
+                Vector2 direction =
+                    (player.position - firePoint.position).normalized;
+                bulletObject.GetComponent<MacrophageBullet>().SetDirection(direction);
+            }
+        }
     }
 }

@@ -1,16 +1,23 @@
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class MacrophageBullet : MonoBehaviour
 {
-    public float speed = -15f;   // Speed at which the bullet moves
+    [SerializeField] private float speed = 15f;
     [SerializeField] float destroyDistance = 15f;
+    private Vector2 direction = Vector2.left;
+
+    public void SetDirection(Vector2 newDirection)
+    {
+        if (newDirection.sqrMagnitude > 0f)
+        {
+            direction = newDirection.normalized;
+        }
+    }
+
     void Update()
     {
-        transform.position += Vector3.right * speed * Time.deltaTime;   // Move the bullet to the right at the specified speed
+        transform.localPosition += (Vector3)(direction * speed * Time.deltaTime);
 
-        // Destroy bullets when they become invisible
         if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
             Destroy(gameObject);

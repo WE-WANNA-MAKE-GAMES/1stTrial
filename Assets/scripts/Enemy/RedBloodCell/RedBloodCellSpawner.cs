@@ -9,6 +9,7 @@ public class RedBloodCellSpawner : MonoBehaviour
     [SerializeField] private float maxY = 4f;    // Maximum Y position for macrophage spawn
     [SerializeField] private Transform player; // Reference to the player transform to determine spawn position
     [SerializeField] private float spawnOffsetX = 5f; // Distance from the player at which macrophages will spawn
+    [SerializeField] private Transform scrollRoot;
 
     private void Update()
     {
@@ -44,7 +45,8 @@ public class RedBloodCellSpawner : MonoBehaviour
         Instantiate(
             redBloodCellPrefab,
             spawnPosition,
-            Quaternion.identity
+            Quaternion.identity,
+            scrollRoot   // 追加
         );
     }
 }
