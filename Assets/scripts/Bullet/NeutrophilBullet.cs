@@ -4,12 +4,6 @@ public class NeutrophilBullet : MonoBehaviour
 {
     public float speed = -15f;
     [SerializeField] float destroyDistance = 15f;
-    private CameraScroll cameraScroll;
-
-    private void Awake()
-    {
-        cameraScroll = Camera.main.GetComponent<CameraScroll>();
-    }
 
     void Update()
     {

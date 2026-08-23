@@ -634,6 +634,10 @@ PrefabInstance:
       value: 0.70085526
       objectReference: {fileID: 0}
     - target: {fileID: 97487011827781425, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 97487011827781425, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: m_Offset.x
       value: 0.08021673
       objectReference: {fileID: 0}
@@ -688,6 +692,10 @@ PrefabInstance:
     - target: {fileID: 4284833698410674100, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 5861144545225188320, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6731633104144208708, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: m_Enabled
