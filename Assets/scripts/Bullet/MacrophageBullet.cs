@@ -3,7 +3,8 @@ using UnityEngine;
 public class MacrophageBullet : MonoBehaviour
 {
     [SerializeField] private float speed = 15f;
-    [SerializeField] float destroyDistance = 15f;
+    [SerializeField] private float destroyDistance = 15f;
+
     private Vector2 direction = Vector2.left;
 
     public void SetDirection(Vector2 newDirection)
@@ -16,36 +17,36 @@ public class MacrophageBullet : MonoBehaviour
 
     void Update()
     {
-        transform.localPosition += (Vector3)(direction * speed * Time.deltaTime);
+        transform.localPosition +=
+            (Vector3)(direction * speed * Time.deltaTime);
 
-        if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
+            // Debug.Log($"Direction: {direction}, speed: {speed}");
+
+        if (Mathf.Abs(transform.position.x - Camera.main.transform.position.x) > destroyDistance)
         {
             Destroy(gameObject);
         }
     }
-    /* //!なぜか消えない
-    // Destroy the bullet when it goes off-screen to prevent memory leaks
-    private void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
-    */
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PlayerDamageReceiver") || other.CompareTag("Player"))  // Check if the bullet collides with the player
+        if (other.CompareTag("PlayerDamageReceiver") ||
+            other.CompareTag("Player"))
         {
-            PlayerHealth playerHealth = other.GetComponentInParent<PlayerHealth>();    // Get the PlayerHealth component from the player or parent object
+            PlayerHealth playerHealth =
+                other.GetComponentInParent<PlayerHealth>();
+
             if (playerHealth != null)
             {
-                playerHealth.TakeDamage(2, transform); // Deal 2 damage to the player
+                playerHealth.TakeDamage(2, transform);
             }
+
             Destroy(gameObject);
         }
-        else if (other.CompareTag("Bullet"))  // Check if the bullet collides with another bullet
+        else if (other.CompareTag("Bullet"))
         {
-            Destroy(other.gameObject); // Destroy the bullet
-            Destroy(gameObject); // Destroy this bullet as well
+            Destroy(other.gameObject);
+            Destroy(gameObject);
         }
     }
 }

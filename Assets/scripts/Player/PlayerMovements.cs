@@ -83,8 +83,8 @@ public class PlayerMovements : MonoBehaviour
     {
         isDisabled = true;
 
-        rb.linearVelocity =
-            new Vector2(cameraScroll.ScrollSpeed, 0f);
+        float scrollCompensation = cameraScroll.IsAtStageEnd ? 0f : cameraScroll.ScrollSpeed;
+        rb.linearVelocity = new Vector2(scrollCompensation, 0f);
 
         yield return new WaitForSeconds(duration);
 
