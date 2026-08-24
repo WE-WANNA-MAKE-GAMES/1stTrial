@@ -5,6 +5,7 @@ public class Nets : MonoBehaviour
     [SerializeField] private float speed = -15f;
     [SerializeField] private float disabledTime = 1f;
     [SerializeField] private float destroyDistance = 15f;
+    [SerializeField] private GameObject hitEffectPrefab; // 追加：被弾エフェクトのプレハブ
 
     void Update()
     {
@@ -38,6 +39,16 @@ public class Nets : MonoBehaviour
         if (playerEffect != null)
         {
             playerEffect.PlayDisabledEffect(disabledTime);
+        }
+
+        // 追加：被弾位置にエフェクトを再生
+        if (hitEffectPrefab != null)
+        {
+            Instantiate(
+                hitEffectPrefab,
+                transform.position,
+                Quaternion.identity
+            );
         }
 
         Destroy(gameObject);
