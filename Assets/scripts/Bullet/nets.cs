@@ -5,7 +5,10 @@ public class Nets : MonoBehaviour
     [SerializeField] private float speed = -15f;
     [SerializeField] private float disabledTime = 1f;
     [SerializeField] private float destroyDistance = 15f;
-    [SerializeField] private GameObject hitEffectPrefab; // 追加：被弾エフェクトのプレハブ
+    //!=================================================================
+    //!今被弾エフェクトが通常被弾と同じだから、NETs被弾エフェクトを作る必要性あり
+    //!=================================================================
+    [SerializeField] private GameObject hitEffectPrefab; //! 追加：被弾エフェクトのプレハブ
 
     void Update()
     {
