@@ -20,3 +20,4 @@ public class BossClear : MonoBehaviour
         GameManager.Instance.GameClear();
     }
 }
+//通知テストよう
