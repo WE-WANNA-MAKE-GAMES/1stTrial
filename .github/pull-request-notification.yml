@@ -1,0 +1,55 @@
+name: Pull Request Notification
+
+on:
+    pull_request:
+        types:
+            - opened
+            - reopened
+
+jobs:
+    notify-discord:
+        if: github.event.pull_request.base.ref == 'develop'
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Notify Discord
+              env:
+                  DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_PR_WEBHOOK_URL }}
+                  PR_TITLE: ${{ github.event.pull_request.title }}
+                  PR_URL: ${{ github.event.pull_request.html_url }}
+                  PR_NUMBER: ${{ github.event.pull_request.number }}
+                  AUTHOR: ${{ github.event.pull_request.user.login }}
+                  HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+                  BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+              run: |
+                  jq -n \
+                    --arg number "#$PR_NUMBER" \
+                    --arg title "$PR_TITLE" \
+                    --arg author "$AUTHOR" \
+                    --arg head "$HEAD_BRANCH" \
+                    --arg base "$BASE_BRANCH" \
+                    --arg url "$PR_URL" \
+                    '{
+                      embeds: [{
+                        title: "Pull Request",
+                        description: ($number + " " + $title),
+                        fields: [
+                          {
+                            name: "Author",
+                            value: $author,
+                            inline: true
+                          },
+                          {
+                            name: "Branch",
+                            value: ($head + " → " + $base),
+                            inline: true
+                          }
+                        ],
+                        url: $url
+                      }]
+                    }' |
+                  curl \
+                    -H "Content-Type: application/json" \
+                    -X POST \
+                    -d @- \
+                    "$DISCORD_WEBHOOK_URL"
