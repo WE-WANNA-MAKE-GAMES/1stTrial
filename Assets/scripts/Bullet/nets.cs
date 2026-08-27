@@ -5,16 +5,28 @@ public class Nets : MonoBehaviour
     [SerializeField] private float speed = -15f;
     [SerializeField] private float disabledTime = 1f;
     [SerializeField] private float destroyDistance = 15f;
-    //!=================================================================
-    //!今被弾エフェクトが通常被弾と同じだから、NETs被弾エフェクトを作る必要性あり
-    //!=================================================================
-    [SerializeField] private GameObject hitEffectPrefab; //! 追加：被弾エフェクトのプレハブ
+    [SerializeField] private GameObject hitEffectPrefab; // NETs被弾時のエフェクト用プレハブ
 
-    void Update()
+    private void Update()
+    {
+        Move();
+        CheckOutOfScreen();
+    }
+
+    /// <summary>
+    /// NETs弾を移動させる
+    /// </summary>
+    private void Move()
     {
         transform.localPosition += Vector3.right * speed * Time.deltaTime;
+    }
 
-        if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
+    /// <summary>
+    /// 画面外に出た場合に自身を破棄する
+    /// </summary>
+    private void CheckOutOfScreen()
+    {
+        if (Camera.main != null && transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
             Destroy(gameObject);
         }
@@ -22,29 +34,47 @@ public class Nets : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("PlayerDamageReceiver") &&
-            !other.CompareTag("Player"))
+        if (!IsTargetPlayer(other))
         {
             return;
         }
 
-        PlayerMovements playerMovements =
-            other.GetComponentInParent<PlayerMovements>();
+        ApplyDisabledToPlayer(other);
+        SpawnHitEffect();
+        Destroy(gameObject);
+    }
 
-        PlayerInvincibleEffect playerEffect =
-            other.GetComponentInParent<PlayerInvincibleEffect>();
+    /// <summary>
+    /// 衝突対象がプレイヤーかどうかを判定する
+    /// </summary>
+    private bool IsTargetPlayer(Collider2D other)
+    {
+        return other.CompareTag("PlayerDamageReceiver") || other.CompareTag("Player");
+    }
 
+    /// <summary>
+    /// プレイヤーに行動不能（スタン）および白化エフェクトを適用する
+    /// </summary>
+    private void ApplyDisabledToPlayer(Collider2D other)
+    {
+        PlayerMovements playerMovements = other.GetComponentInParent<PlayerMovements>();
         if (playerMovements != null)
         {
             playerMovements.SetDisabled(disabledTime);
         }
 
-        if (playerEffect != null)
+        PlayerDisabledEffect playerDisabledEffect = other.GetComponentInParent<PlayerDisabledEffect>();
+        if (playerDisabledEffect != null)
         {
-            playerEffect.PlayDisabledEffect(disabledTime);
+            playerDisabledEffect.PlayDisabledEffect(disabledTime);
         }
+    }
 
-        // 追加：被弾位置にエフェクトを再生
+    /// <summary>
+    /// 被弾位置にエフェクトを生成する
+    /// </summary>
+    private void SpawnHitEffect()
+    {
         if (hitEffectPrefab != null)
         {
             Instantiate(
@@ -53,7 +83,5 @@ public class Nets : MonoBehaviour
                 Quaternion.identity
             );
         }
-
-        Destroy(gameObject);
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class NeutrophilSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab; // Reference to the enemy prefab to spawn
     [SerializeField] private float spawnInterval = 1f;   // Time interval between enemy spawns in seconds

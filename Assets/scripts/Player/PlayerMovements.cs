@@ -12,18 +12,14 @@ public class PlayerMovements : MonoBehaviour
     private PlayerKnockback playerKnockback;
 
     private bool isDisabled = false;
-    private PlayerInvincibleEffect playerInvincibleEffect;
     private PlayerDisabledEffect playerDisabledEffect;
-    private PlayerHealth playerHealth;
     [SerializeField] private CameraScroll cameraScroll;
-
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         controls = new PlayerControls();
         playerKnockback = GetComponent<PlayerKnockback>();
-        playerHealth = GetComponent<PlayerHealth>();
         playerDisabledEffect = GetComponent<PlayerDisabledEffect>();
     }
 

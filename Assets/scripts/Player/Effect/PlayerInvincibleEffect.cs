@@ -14,6 +14,7 @@ public class PlayerInvincibleEffect : MonoBehaviour
 
     public void PlayInvincibleEffect(float duration)
     {
+        StopAllCoroutines();
         StartCoroutine(InvincibleFlash(duration));
     }
 
@@ -34,28 +35,8 @@ public class PlayerInvincibleEffect : MonoBehaviour
 
             yield return new WaitForSeconds(0.05f);
 
-            timer += 0.2f;
+            timer += 0.1f;
         }
-
-        spriteRenderer.color = originalColor;
-    }
-
-    public void PlayDisabledEffect(float duration)
-    {
-        StartCoroutine(DisabledEffect(duration));
-    }
-
-    private IEnumerator DisabledEffect(float duration)
-    {
-        Color disabledColor = Color.Lerp(
-            originalColor,
-            Color.white,
-            0.5f
-        );
-
-        spriteRenderer.color = disabledColor;
-
-        yield return new WaitForSeconds(duration);
 
         spriteRenderer.color = originalColor;
     }
