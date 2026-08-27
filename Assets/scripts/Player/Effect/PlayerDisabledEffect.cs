@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerDisabledEffect : MonoBehaviour
 {
     [SerializeField]
-    private float whiteAmount = 0.5f;
+    private Color disabledColor = new Color(0.9f, 0.9f, 1f, 0.6f); // スタン中の色（やや白く半透明）
 
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
@@ -17,17 +17,12 @@ public class PlayerDisabledEffect : MonoBehaviour
 
     public void PlayDisabledEffect(float duration)
     {
+        StopAllCoroutines();
         StartCoroutine(DisabledEffect(duration));
     }
 
     private IEnumerator DisabledEffect(float duration)
     {
-        Color disabledColor = Color.Lerp(
-            originalColor,
-            Color.white,
-            whiteAmount
-        );
-
         spriteRenderer.color = disabledColor;
 
         yield return new WaitForSeconds(duration);
