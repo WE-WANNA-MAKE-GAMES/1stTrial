@@ -1,14 +1,14 @@
 using UnityEngine;
 
-public class MacrophageSpawner : MonoBehaviour
+public class RandomEnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject macrophagePrefab; // Reference to the macrophage prefab to spawn
-    [SerializeField] private float spawnInterval = 1f;   // Time interval between macrophage spawns in seconds
+    [SerializeField] private GameObject enemyPrefab; // Reference to the enemy prefab to spawn
+    [SerializeField] private float spawnInterval = 1f;   // Time interval between enemy spawns in seconds
     private float timer = 0f;    // Timer to track time since last spawn
-    [SerializeField] private float minY = -4f;   // Minimum Y position for macrophage spawn
-    [SerializeField] private float maxY = 4f;    // Maximum Y position for macrophage spawn
+    [SerializeField] private float minY = -4f;   // Minimum Y position for enemy spawn
+    [SerializeField] private float maxY = 4f;    // Maximum Y position for enemy spawn
     [SerializeField] private Transform player; // Reference to the player transform to determine spawn position
-    [SerializeField] private float spawnOffsetX = 5f; // Distance from the player at which macrophages will spawn
+    [SerializeField] private float spawnOffsetX = 5f; // Distance from the player at which enemies will spawn
     [SerializeField] private Transform scrollRoot;
 
     private void Update()
@@ -19,11 +19,11 @@ public class MacrophageSpawner : MonoBehaviour
         {
             timer = 0f;
 
-            SpawnMacrophage();
+            SpawnEnemy();
         }
     }
 
-    private void SpawnMacrophage()
+    private void SpawnEnemy()
     {
         Camera camera = Camera.main;
 
@@ -43,7 +43,7 @@ public class MacrophageSpawner : MonoBehaviour
             );
 
         Instantiate(
-            macrophagePrefab,
+            enemyPrefab,
             spawnPosition,
             Quaternion.identity,
             scrollRoot   // 追加

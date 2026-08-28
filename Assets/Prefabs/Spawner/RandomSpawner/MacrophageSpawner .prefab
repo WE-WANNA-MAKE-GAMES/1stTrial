@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3223288024707612215}
-  - component: {fileID: 5140863622565719147}
+  - component: {fileID: 8610586430466695091}
   m_Layer: 0
   m_Name: 'MacrophageSpawner '
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5140863622565719147
+--- !u!114 &8610586430466695091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3922947569896540985}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5073d63a55872743a246946f7dc06aa, type: 3}
+  m_Script: {fileID: 11500000, guid: 77c486bf1e3804e698880d266c9c1cdb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MacrophageSpawner
-  macrophagePrefab: {fileID: 4284833698410674100, guid: c0d5ae0d3ef21fd448083fa8854aa429, type: 3}
-  spawnInterval: 2.3
+  m_EditorClassIdentifier: Assembly-CSharp::RandomEnemySpawner
+  enemyPrefab: {fileID: 5584317068948115328, guid: e8e769ea18de74149853bd95b678d664, type: 3}
+  spawnInterval: 4
   minY: -4
   maxY: 4
   player: {fileID: 0}
   spawnOffsetX: 5
+  scrollRoot: {fileID: 0}
