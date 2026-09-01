@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyKnockback : MonoBehaviour
 {
     [SerializeField] private float knockbackPower = 5f;
-
     [SerializeField] private float knockbackTime = 0.1f;
 
     private Rigidbody2D rb;
@@ -26,8 +25,14 @@ public class EnemyKnockback : MonoBehaviour
     private IEnumerator KnockbackCoroutine(Vector2 direction)
     {
         IsKnockback = true;
-        rb.linearVelocity = direction.normalized * knockbackPower;
+
+        rb.linearVelocity =
+            direction.normalized * knockbackPower;
+
         yield return new WaitForSeconds(knockbackTime);
+
+        rb.linearVelocity = Vector2.zero;
+
         IsKnockback = false;
     }
 }

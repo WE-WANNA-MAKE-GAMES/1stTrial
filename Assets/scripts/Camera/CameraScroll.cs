@@ -8,7 +8,8 @@ public class CameraScroll : MonoBehaviour
     [SerializeField]
     private BoxCollider2D stageBounds;
 
-    public float ScrollSpeed => scrollSpeed;
+    public float ScrollSpeed =>
+        IsAtStageEnd ? 0f : scrollSpeed;
 
     public bool IsAtStageEnd { get; private set; }
 
