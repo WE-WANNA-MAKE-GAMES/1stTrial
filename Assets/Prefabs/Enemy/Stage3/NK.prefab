@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff9448f811eb447dbadf80f7d0c4b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHP: 2
+  maxHP: 3
 --- !u!114 &5378886738280023713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8cab85e801ee494a94632e5a5a74753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackMovement
-  moveSpeed: 3
+  moveSpeed: 4
   turnSpeed: 120
   cameraScroll: {fileID: 0}
 --- !u!114 &7145516386023334657

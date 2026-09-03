@@ -1,4 +1,5 @@
 using UnityEngine;
+using Manager;
 
 public class Goal : MonoBehaviour
 {

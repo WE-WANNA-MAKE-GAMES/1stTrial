@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using GameManager = Manager.GameManager;
 
 public class BossClear : MonoBehaviour
 {
@@ -16,8 +17,14 @@ public class BossClear : MonoBehaviour
     private IEnumerator ClearAfterDelay()
     {
         yield return new WaitForSeconds(clearDelay);
-
-        GameManager.Instance.GameClear();
+        if (GameManager.Instance.CurrentStage >= GameManager.Instance.TotalStages)
+        {
+            GameManager.Instance.GameClear();
+        }
+        else
+        {
+            GameManager.Instance.StageClear();
+        }
     }
 }
 //通知テストよう
