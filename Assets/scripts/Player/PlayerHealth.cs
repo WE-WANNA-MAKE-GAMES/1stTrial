@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHP = 5;  // Maximum health points for the player
-    private int currentHP;  // Current health points of the player
+    [SerializeField] public int maxHP = 5;  // Maximum health points for the player
+    public int currentHP;  // Current health points of the player
 
     [SerializeField] private float invincibleTime = 2f; // Duration of invincibility after taking damage
     public float InvincibleTimeNum => invincibleTime;
