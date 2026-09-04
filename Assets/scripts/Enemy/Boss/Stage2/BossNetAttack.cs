@@ -39,7 +39,7 @@ public class BossNetAttack : MonoBehaviour
         Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
 
         return position.z > 0f &&
-               position.x >= 0f && position.x <= 1f &&
-               position.y >= 0f && position.y <= 1f;
+            position.x >= 0f && position.x <= 1f &&
+            position.y >= 0f && position.y <= 1f;
     }
 }
