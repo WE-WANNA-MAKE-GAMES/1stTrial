@@ -17,8 +17,7 @@ public class NKExplosionEffect : MonoBehaviour
         GameObject explosionObject = Instantiate(
             explosionPrefab,
             transform.position,
-            Quaternion.identity,
-            transform.parent
+            Quaternion.identity
         );
 
         ParticleSystem particleSystem =

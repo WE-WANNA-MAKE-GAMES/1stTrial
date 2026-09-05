@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd9458e0159f48838d286615edd82a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelfDestruction
-  selfDestructionTime: 4
+  selfDestructionTime: 3
   explosionRange: 2
   damage: 3
 --- !u!114 &8425848390406698553

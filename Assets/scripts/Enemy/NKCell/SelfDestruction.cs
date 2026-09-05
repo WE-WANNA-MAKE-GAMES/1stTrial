@@ -54,6 +54,8 @@ public class SelfDestruction : MonoBehaviour
 
         hasExploded = true;
 
+        Debug.Log($"NK爆発。Playerとの距離: {Vector2.Distance(transform.position, player.position)}");
+
         if (player != null)
         {
             float distance =
@@ -61,8 +63,9 @@ public class SelfDestruction : MonoBehaviour
 
             if (distance < explosionRange)
             {
+                Debug.Log($"Playerが爆発範囲内にいます。距離: {distance}");
                 PlayerHealth playerHealth =
-                    player.GetComponent<PlayerHealth>();
+                    player.GetComponentInParent<PlayerHealth>();
 
                 if (playerHealth != null)
                 {
@@ -71,6 +74,14 @@ public class SelfDestruction : MonoBehaviour
                         transform
                     );
                 }
+                else
+                {
+                    Debug.LogWarning("PlayerHealthコンポーネントが見つかりません。");
+                }
+            }
+            else
+            {
+                Debug.Log($"Playerは爆発範囲外です。距離: {distance}");
             }
         }
 
