@@ -64,8 +64,13 @@ public class PlayerHealth : MonoBehaviour
         GameManager.Instance.GameOver();  // Call the GameOver method from the GameManager to handle game over logic
         Destroy(gameObject);  // Destroy the player game object
     }
+
+    //*================================
+    //* プレイヤーのHP回復処理
+    //*================================
     public void Heal(int amount)
-{
-    currentHP = Mathf.Min(currentHP + amount, maxHP);
-}
+    {
+        currentHP = Mathf.Min(currentHP + amount, maxHP);
+        Debug.Log($"Player healed.\nHealed amount: {amount}\nCurrent HP: {currentHP}");   // Debug log to check the current HP after healing. Should be deleted at launch.
+    }
 }

@@ -679,6 +679,55 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1989224830349445393, guid: fe0fdce0b266e4e13b283ea9843116ee, type: 3}
   m_PrefabInstance: {fileID: 652246796}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &714814501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 714814502}
+  - component: {fileID: 714814503}
+  m_Layer: 0
+  m_Name: RedBloodCellSpawner (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &714814502
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714814501}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1846305814}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &714814503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714814501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33bd3c7c12789407aa7e93c075b93e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RedBloodCellSpawner
+  redBloodCellPrefab: {fileID: 4400741194429797582, guid: 71760676361f5439981adb1a7e03e75b, type: 3}
+  spawnInterval: 0.2
+  spawnPoint: {fileID: 714814502}
+  minY: -4.5
+  maxY: 4.5
 --- !u!1 &857576907 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3489616164944370932, guid: 6ac3cafe0b06f42a9914f52a10f2759e, type: 3}
@@ -1287,6 +1336,14 @@ PrefabInstance:
       propertyPath: maxHP
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1937766248353988722, guid: 680b49794842d492c8ba94f98e3236bb, type: 3}
+      propertyPath: m_Radius
+      value: 0.05975288
+      objectReference: {fileID: 0}
+    - target: {fileID: 1937766248353988722, guid: 680b49794842d492c8ba94f98e3236bb, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.0014386906
+      objectReference: {fileID: 0}
     - target: {fileID: 4507696500485845030, guid: 680b49794842d492c8ba94f98e3236bb, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1542,11 +1599,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bd3c7c12789407aa7e93c075b93e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RedBloodCellSpawner
-  redBloodCellPrefab: {fileID: 7699888136660033176, guid: 061d6d2ab6011471c9de23bb09e0819b, type: 3}
-  spawnInterval: 0.1
+  redBloodCellPrefab: {fileID: 4400741194429797582, guid: 71760676361f5439981adb1a7e03e75b, type: 3}
+  spawnInterval: 0.2
   spawnPoint: {fileID: 1278365663}
-  minY: -4
-  maxY: 4
+  minY: -4.5
+  maxY: 4.5
 --- !u!4 &1387505195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7391874141505588188, guid: 680b49794842d492c8ba94f98e3236bb, type: 3}
@@ -1899,6 +1956,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1278365663}
+  - {fileID: 714814502}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1846305815
