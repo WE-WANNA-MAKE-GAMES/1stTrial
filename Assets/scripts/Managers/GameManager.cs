@@ -149,5 +149,18 @@ namespace Manager
             Time.timeScale = 1f;
             SceneManager.LoadScene("Title"); //Titleに戻る
         }
+
+        //*==========================
+        //* デバッグモード
+        //*==========================
+        [Header("Debug")]
+        [SerializeField] private bool debugMode = false;
+
+        public bool DebugMode => debugMode;
+
+        public bool IsDebugMode()
+        {
+            return debugMode;
+        }
     }
 }
