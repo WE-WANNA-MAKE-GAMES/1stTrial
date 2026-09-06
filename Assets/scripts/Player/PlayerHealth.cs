@@ -64,4 +64,8 @@ public class PlayerHealth : MonoBehaviour
         GameManager.Instance.GameOver();  // Call the GameOver method from the GameManager to handle game over logic
         Destroy(gameObject);  // Destroy the player game object
     }
+    public void Heal(int amount)
+{
+    currentHP = Mathf.Min(currentHP + amount, maxHP);
+}
 }

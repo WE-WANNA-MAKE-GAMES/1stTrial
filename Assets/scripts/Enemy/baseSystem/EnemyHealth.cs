@@ -28,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log("Enemy took damage. Current HP: " + currentHP);   // Debug log to check the current HP after taking damage. Should be deleted at launch.
         if (currentHP <= 0)
         {
+            GetComponent<HealthItemDrop>()?.Drop();
             enemyEffect.PlayExplosion();  // Trigger the explosion effect when the enemy is destroyed
             Destroy(gameObject);
         }
