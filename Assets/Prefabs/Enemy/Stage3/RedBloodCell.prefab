@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 2828859419686300528}
   - component: {fileID: 6861677806786292681}
   - component: {fileID: 8817201325588265267}
+  - component: {fileID: -3549661071984461370}
   m_Layer: 0
   m_Name: RedBloodCell
   m_TagString: Enemy
@@ -318,3 +319,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockback
   knockbackPower: 5
   knockbackTime: 0.1
+--- !u!114 &-3549661071984461370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7699888136660033176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85fce3e48e0976149bf8e407cbda05a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthItemDrop
