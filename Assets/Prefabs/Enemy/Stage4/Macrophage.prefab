@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad1c1720322a48a6807244d99dff9d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  moveSpeed: 6
+  moveSpeed: 5
   destroyDistance: 10
 --- !u!114 &7773359540775951915
 MonoBehaviour:
@@ -362,4 +362,4 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1274868487419933144, guid: 216c32c9bfad87e418a69c273bf930f5, type: 3}
   firePoint: {fileID: 3155020592901900735}
   player: {fileID: 0}
-  fireInterval: 1.5
+  fireInterval: 1

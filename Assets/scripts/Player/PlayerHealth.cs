@@ -5,7 +5,6 @@ using Manager;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] public int maxHP = 5;  // Maximum health points for the player
-    [SerializeField] public int debugModeHP = GameManager.Instance.DebugModeHP;  // Current health points of the player
     public int currentHP;  // Current health points of the player
 
     [SerializeField] private float invincibleTime = 2f; // Duration of invincibility after taking damage
@@ -23,10 +22,10 @@ public class PlayerHealth : MonoBehaviour
     //* プレイヤーのHP初期化処理
     private void Start()
     {
-        if (GameManager.Instance.IsDebugMode())
-        {
-            currentHP = debugModeHP;
-            Debug.Log($"Debug mode active. Player HP set to {debugModeHP}.");  //! Debug log to indicate that debug mode is active and the player's HP has been set. Should be deleted at launch.
+        if (GameManager.Instance != null && GameManager.Instance.IsDebugMode())
+        {  // Set the player's HP to 1 for testing purposes in debug mode
+            currentHP = GameManager.Instance.DebugModeHP;
+            Debug.Log($"Debug mode active. Player HP set to {currentHP}.");  //! Debug log to indicate that debug mode is active and the player's HP has been set. Should be deleted at launch.
         }
         else
         {
@@ -52,7 +51,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerEffect.PlayInvincibleEffect(invincibleTime);  // Play the invincible flash effect
 
-        if (GameManager.Instance.IsDebugMode())
+        if (GameManager.Instance != null && GameManager.Instance.IsDebugMode())
         {
             Debug.Log($"Debug mode active. Player took damage. Current HP: {currentHP}");   // Debug log to check the current HP after taking damage. Should be deleted at launch.
         }
