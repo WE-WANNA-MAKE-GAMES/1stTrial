@@ -2189,6 +2189,10 @@ PrefabInstance:
       propertyPath: scrollRoot
       value: 
       objectReference: {fileID: 406518017}
+    - target: {fileID: 5643073505342194380, guid: ae8268d129d3d459bacf3eff538b6597, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     public float speed = 15f;   // Speed at which the bullet moves
+    public float damage = 1f;   // Damage dealt by the bullet
     [SerializeField] float destroyDistance = 15f;
     void Update()
     {
