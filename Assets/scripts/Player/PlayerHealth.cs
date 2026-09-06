@@ -43,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerEffect.PlayInvincibleEffect(invincibleTime);  // Play the invincible flash effect
 
-        Debug.Log("Player took damage. Current HP: " + currentHP);   // Debug log to check the current HP after taking damage. Should be deleted at launch.
+        Debug.Log($"Player took damage. Current HP: {currentHP}");   // Debug log to check the current HP after taking damage. Should be deleted at launch.
         if (currentHP <= 0)
         {
             Die();  // Call the Die method when the player's health reaches zero or below

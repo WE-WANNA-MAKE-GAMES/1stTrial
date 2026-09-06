@@ -15,12 +15,16 @@ public class PlayerMovements : MonoBehaviour
     private PlayerDisabledEffect playerDisabledEffect;
     [SerializeField] private CameraScroll cameraScroll;
 
+    private Coroutine speedBoostCoroutine;
+    private float baseMoveSpeed;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         controls = new PlayerControls();
         playerKnockback = GetComponent<PlayerKnockback>();
         playerDisabledEffect = GetComponent<PlayerDisabledEffect>();
+        baseMoveSpeed = moveSpeed;
     }
 
     private void OnEnable()
@@ -85,5 +89,24 @@ public class PlayerMovements : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         isDisabled = false;
+    }
+
+    public void ApplySpeedBoost(float multiplier, float duration)
+    {
+        if (speedBoostCoroutine != null)
+        {
+            StopCoroutine(speedBoostCoroutine);
+        }
+
+        moveSpeed = baseMoveSpeed * multiplier;
+        speedBoostCoroutine = StartCoroutine(SpeedBoostDuration(duration));
+    }
+
+    private IEnumerator SpeedBoostDuration(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+
+        moveSpeed = baseMoveSpeed;
+        speedBoostCoroutine = null;
     }
 }
