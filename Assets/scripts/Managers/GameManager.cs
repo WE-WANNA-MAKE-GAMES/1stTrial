@@ -155,8 +155,8 @@ namespace Manager
         //*==========================
         [Header("Debug")]
         [SerializeField] private bool debugMode = false;
-
-        public bool DebugMode => debugMode;
+        [SerializeField] private int debugModeHP = 1000;
+        public int DebugModeHP => debugModeHP;
 
         public bool IsDebugMode()
         {
