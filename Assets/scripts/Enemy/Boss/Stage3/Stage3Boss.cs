@@ -3,7 +3,7 @@ using Manager;
 
 public class Stage3Boss : MonoBehaviour
 {
-    [SerializeField] private float survivalTime = 5f;
+    [SerializeField] private float survivalTime = 30f;
 
     private float timer = 0f;
     private bool isCleared = false;
