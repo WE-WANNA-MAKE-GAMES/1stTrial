@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6861677806786292681}
   - component: {fileID: 8817201325588265267}
   - component: {fileID: 6737899456997959451}
+  - component: {fileID: -4566454820612519213}
   m_Layer: 0
   m_Name: RedBloodCell
   m_TagString: Enemy
@@ -332,4 +333,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthItemDrop
   healthItemPrefab: {fileID: 2392991008513031520, guid: 643d5fff5e457f944a563603516be0d4, type: 3}
-  dropChance: 0.74
+  dropChance: 0.3
+--- !u!114 &-4566454820612519213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7699888136660033176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd09818688a74584cb218edba0cd748b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpeedItemDrop
+  speedItemPrefab: {fileID: 2392991008513031520, guid: 40f9a253b227156429ded2a09c7f8808, type: 3}
+  dropChance: 0.3

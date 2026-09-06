@@ -6,7 +6,8 @@ using System.Collections;
 public class PlayerMovements : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
-    private Rigidbody2D rb;
+    private Coroutine speedBoostCoroutine;
+private float baseMoveSpeed;    private Rigidbody2D rb;
     private PlayerControls controls;
     private Vector2 moveInput;
     private PlayerKnockback playerKnockback;
@@ -21,6 +22,7 @@ public class PlayerMovements : MonoBehaviour
         controls = new PlayerControls();
         playerKnockback = GetComponent<PlayerKnockback>();
         playerDisabledEffect = GetComponent<PlayerDisabledEffect>();
+        baseMoveSpeed = moveSpeed;
     }
 
     private void OnEnable()
@@ -86,4 +88,22 @@ public class PlayerMovements : MonoBehaviour
 
         isDisabled = false;
     }
+    public void ApplySpeedBoost(float multiplier, float duration)
+{
+    if (speedBoostCoroutine != null)
+    {
+        StopCoroutine(speedBoostCoroutine);
+    }
+
+    moveSpeed = baseMoveSpeed * multiplier;
+    speedBoostCoroutine = StartCoroutine(SpeedBoostDuration(duration));
+}
+
+private IEnumerator SpeedBoostDuration(float duration)
+{
+    yield return new WaitForSeconds(duration);
+
+    moveSpeed = baseMoveSpeed;
+    speedBoostCoroutine = null;
+}
 }

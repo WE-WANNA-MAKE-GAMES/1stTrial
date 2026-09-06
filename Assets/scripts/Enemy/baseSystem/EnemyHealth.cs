@@ -29,6 +29,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHP <= 0)
         {
             GetComponent<HealthItemDrop>()?.Drop();
+             GetComponent<SpeedItemDrop>()?.Drop();
             enemyEffect.PlayExplosion();  // Trigger the explosion effect when the enemy is destroyed
             Destroy(gameObject);
         }
