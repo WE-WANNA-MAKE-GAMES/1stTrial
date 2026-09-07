@@ -10,7 +10,7 @@ namespace Manager
         [SerializeField] private GameObject gameOverPanel;
         [SerializeField] private GameObject stageClearPanel;
         [SerializeField] private GameObject gameClearPanel;
-        [SerializeField] private int totalStages = 3;
+        private int totalStages = 4;
 
         private void Start()
         {
@@ -155,8 +155,14 @@ namespace Manager
         //*==========================
         [Header("Debug")]
         [SerializeField] private bool debugMode = false;
-        [SerializeField] private int debugModeHP = 1000;
-        public int DebugModeHP => debugModeHP;
+        [SerializeField] private float debugModeHP = 1000f;
+        [SerializeField] private float debugModeAttackPower = 100f;
+        [SerializeField] private float debugModeSpeed = 15f;
+        [SerializeField] private float debugModeShootInterval = 0.05f;
+        public float DebugModeHP => debugModeHP;
+        public float DebugModeAttackPower => debugModeAttackPower;
+        public float DebugModeSpeed => debugModeSpeed;
+        public float DebugModeShootInterval => debugModeShootInterval;
 
         public bool IsDebugMode()
         {

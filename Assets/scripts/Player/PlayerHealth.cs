@@ -4,8 +4,8 @@ using Manager;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] public int maxHP = 5;  // Maximum health points for the player
-    public int currentHP;  // Current health points of the player
+    [SerializeField] public float maxHP = 5f;  // Maximum health points for the player
+    public float currentHP;  // Current health points of the player
 
     [SerializeField] private float invincibleTime = 2f; // Duration of invincibility after taking damage
     public float InvincibleTimeNum => invincibleTime;
@@ -22,18 +22,15 @@ public class PlayerHealth : MonoBehaviour
     //* プレイヤーのHP初期化処理
     private void Start()
     {
+        currentHP = maxHP;
         if (GameManager.Instance != null && GameManager.Instance.IsDebugMode())
-        {  // Set the player's HP to 1 for testing purposes in debug mode
+        {  // Set the player's HP to the debug value for testing purposes in debug mode
             currentHP = GameManager.Instance.DebugModeHP;
             Debug.Log($"Debug mode active. Player HP set to {currentHP}.");  //! Debug log to indicate that debug mode is active and the player's HP has been set. Should be deleted at launch.
         }
-        else
-        {
-            currentHP = maxHP;
-        }
     }
     // * プレイヤーがダメージを受けたときの処理
-    public void TakeDamage(int damage, Transform attacker)
+    public void TakeDamage(float damage, Transform attacker)
     {
         if (isInvincible)
         {
@@ -84,7 +81,7 @@ public class PlayerHealth : MonoBehaviour
     //*================================
     //* プレイヤーのHP回復処理
     //*================================
-    public void Heal(int amount)
+    public void Heal(float amount)
     {
         currentHP = Mathf.Min(currentHP + amount, maxHP);
         Debug.Log($"Player healed.\nHealed amount: {amount}\nCurrent HP: {currentHP}");   // Debug log to check the current HP after healing. Should be deleted at launch.

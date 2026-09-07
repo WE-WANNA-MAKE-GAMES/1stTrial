@@ -791,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 1608878012}
     - target: {fileID: -1006258249049579505, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1006258249049579505, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
       propertyPath: scrollRoot
@@ -867,8 +867,14 @@ PrefabInstance:
       objectReference: {fileID: 1524827994}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2779359165131347823, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1513160574}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4284833698410674100, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1524828007}
   m_SourcePrefab: {fileID: 100100000, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
 --- !u!1001 &1058930156
 PrefabInstance:
@@ -1221,6 +1227,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1513160573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1513160574}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1513160574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513160573}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1524827994}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1524827981 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4284833698410674100, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
@@ -1231,6 +1268,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2779359165131347823, guid: 53a6c500c7c55b0419e516559d0d8313, type: 3}
   m_PrefabInstance: {fileID: 967298213}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1524828007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1524827981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5e941a25d5246a2b907bd8d50467ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossShoot
+  bulletPrefab: {fileID: 1274868487419933144, guid: 75a530eef47654beab3ec81a4f201482, type: 3}
+  firePoint: {fileID: 1513160574}
+  fireInterval: 2
 --- !u!4 &1608878012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7391874141505588188, guid: 680b49794842d492c8ba94f98e3236bb, type: 3}
@@ -1507,6 +1559,10 @@ PrefabInstance:
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 1189272569}
+    - target: {fileID: 4006526734854564319, guid: 7896522b847d34597897fe9bfd8b8beb, type: 3}
+      propertyPath: debugModeSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4006526734854564319, guid: 7896522b847d34597897fe9bfd8b8beb, type: 3}
       propertyPath: gameClearPanel
       value: 

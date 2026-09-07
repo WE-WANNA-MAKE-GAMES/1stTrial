@@ -1554,9 +1554,17 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 4006526734854564319, guid: 7896522b847d34597897fe9bfd8b8beb, type: 3}
+      propertyPath: totalStages
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006526734854564319, guid: 7896522b847d34597897fe9bfd8b8beb, type: 3}
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 1189272569}
+    - target: {fileID: 4006526734854564319, guid: 7896522b847d34597897fe9bfd8b8beb, type: 3}
+      propertyPath: debugModeSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4006526734854564319, guid: 7896522b847d34597897fe9bfd8b8beb, type: 3}
       propertyPath: gameClearPanel
       value: 

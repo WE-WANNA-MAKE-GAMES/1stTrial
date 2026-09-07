@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using Manager;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovements : MonoBehaviour
@@ -27,6 +28,15 @@ public class PlayerMovements : MonoBehaviour
         baseMoveSpeed = moveSpeed;
     }
 
+    private float GetMoveSpeed()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.IsDebugMode())
+        {
+            return GameManager.Instance.DebugModeSpeed;
+        }
+        return moveSpeed;
+    }
+
     private void OnEnable()
     {
         controls.Enable();
@@ -49,7 +59,7 @@ public class PlayerMovements : MonoBehaviour
             return;
         }
 
-        Vector2 playerVelocity = moveInput.normalized * moveSpeed;
+        Vector2 playerVelocity = moveInput.normalized * GetMoveSpeed();
 
         // カメラがスクロールしている間だけ、
         // プレイヤーにもステージの移動速度を加える

@@ -1,10 +1,20 @@
 using UnityEngine;
+using Manager;
 
 public class PlayerBullet : MonoBehaviour
 {
     public float speed = 15f;   // Speed at which the bullet moves
     public float damage = 1f;   // Damage dealt by the bullet
     [SerializeField] float destroyDistance = 15f;
+
+    private void Start()
+    {
+        // If the GameManager is in debug mode, set the bullet's damage to the debug value
+        if (GameManager.Instance != null && GameManager.Instance.IsDebugMode())
+        {
+            damage = GameManager.Instance.DebugModeAttackPower;
+        }
+    }
     void Update()
     {
         transform.localPosition += Vector3.right * speed * Time.deltaTime;
@@ -26,7 +36,7 @@ public class PlayerBullet : MonoBehaviour
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();    // Get the EnemyHealth component from the enemy that was hit
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(1); // Deal 1 damage to the enemy
+                enemyHealth.TakeDamage(damage); // Deal damage to the enemy
             }
             Destroy(gameObject);
         }

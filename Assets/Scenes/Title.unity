@@ -1275,6 +1275,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8245912980492050105, guid: c7a35091a8712410194b96b5a058ce0a, type: 3}
     - target: {fileID: 4006526734854564319, guid: 7896522b847d34597897fe9bfd8b8beb, type: 3}
+      propertyPath: debugModeSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4006526734854564319, guid: 7896522b847d34597897fe9bfd8b8beb, type: 3}
       propertyPath: gameClearPanel
       value: 
       objectReference: {fileID: 3489616164944370932, guid: 6ac3cafe0b06f42a9914f52a10f2759e, type: 3}

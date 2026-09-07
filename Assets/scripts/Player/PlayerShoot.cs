@@ -1,4 +1,5 @@
 using UnityEngine;
+using Manager;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -10,6 +11,15 @@ public class PlayerShoot : MonoBehaviour
     private float timer = 0f;
 
     private PlayerControls controls;
+
+    private void Start()
+    {
+        // If the GameManager is in debug mode, set the fire interval to the debug value
+        if (GameManager.Instance != null && GameManager.Instance.IsDebugMode())
+        {
+            fireInterval = GameManager.Instance.DebugModeShootInterval;
+        }
+    }
 
     private void Awake()
     {

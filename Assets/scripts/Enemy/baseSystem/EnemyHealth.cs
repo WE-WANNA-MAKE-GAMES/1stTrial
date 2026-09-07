@@ -3,8 +3,8 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField]
-    private int maxHP = 1;  // Maximum health points for the enemy
-    private int currentHP;  // Current health points of the enemy
+    private float maxHP = 1;  // Maximum health points for the enemy
+    private float currentHP;  // Current health points of the enemy
     private EnemyEffect enemyEffect; // Reference to the EnemyEffect script for visual feedback
     private EnemyKnockback knockback; // Reference to the EnemyKnockback script for knockback effect
     void Start()
@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
         enemyEffect = GetComponent<EnemyEffect>(); // Get the EnemyEffect component attached to the enemy
         knockback = GetComponent<EnemyKnockback>(); // Get the EnemyKnockback component attached to the enemy
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHP -= damage;    // Reduce current health by the damage amount
         if (knockback != null && knockback.isActiveAndEnabled)
