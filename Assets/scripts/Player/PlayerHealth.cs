@@ -25,7 +25,8 @@ public class PlayerHealth : MonoBehaviour
         currentHP = maxHP;
         if (GameManager.Instance != null && GameManager.Instance.IsDebugMode())
         {  // Set the player's HP to the debug value for testing purposes in debug mode
-            currentHP = GameManager.Instance.DebugModeHP;
+            maxHP = GameManager.Instance.DebugModeHP;
+            currentHP = maxHP;
             Debug.Log($"Debug mode active. Player HP set to {currentHP}.");  //! Debug log to indicate that debug mode is active and the player's HP has been set. Should be deleted at launch.
         }
     }

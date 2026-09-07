@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6526516063654797669}
   - component: {fileID: 91959782372818426}
   - component: {fileID: 3326047256165020842}
+  - component: {fileID: -8060414469780371373}
   m_Layer: 0
   m_Name: Stage2BossBullet
   m_TagString: MacrophageBullet
@@ -175,10 +176,25 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1274868487419933144}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ee3eca19b8238c4c961e440627c9f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MacrophageBullet
   speed: 8
+  destroyDistance: 15
+--- !u!114 &-8060414469780371373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274868487419933144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3f8150f92b5949bf9b09cca57640211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Stage2BossBullet
+  speed: 5
+  damage: 2
   destroyDistance: 15
