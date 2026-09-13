@@ -10,13 +10,14 @@ namespace Manager
         [SerializeField] private GameObject gameOverPanel;
         [SerializeField] private GameObject stageClearPanel;
         [SerializeField] private GameObject gameClearPanel;
-        private int totalStages = 4;
+        [SerializeField] private int totalStages = 4;
 
         private void Start()
         {
-            gameOverPanel.SetActive(false);
-            stageClearPanel.SetActive(false);
-            gameClearPanel.SetActive(false);
+            Time.timeScale = 1f;
+            SetPanelActive(gameOverPanel, false);
+            SetPanelActive(stageClearPanel, false);
+            SetPanelActive(gameClearPanel, false);
         }
 
         private void Awake()
@@ -65,7 +66,7 @@ namespace Manager
         {
             Debug.Log("Game Over");
             Time.timeScale = 0f;
-            gameOverPanel.SetActive(true);
+            SetPanelActive(gameOverPanel, true);
         }
 
         //*==========================
@@ -75,7 +76,7 @@ namespace Manager
         {
             Debug.Log("Stage Clear");
             Time.timeScale = 0f;
-            stageClearPanel.SetActive(true);
+            SetPanelActive(stageClearPanel, true);
         }
 
         //*==========================
@@ -85,7 +86,15 @@ namespace Manager
         {
             Debug.Log("Game Clear");
             Time.timeScale = 0f;
-            gameClearPanel.SetActive(true);
+            SetPanelActive(gameClearPanel, true);
+        }
+
+        private void SetPanelActive(GameObject panel, bool isActive)
+        {
+            if (panel != null)
+            {
+                panel.SetActive(isActive);
+            }
         }
 
         //*==========================

@@ -14,7 +14,10 @@ public class RandomEnemySpawner : MonoBehaviour
 
     private void Awake()
     {
-        cameraScroll = Camera.main.GetComponent<CameraScroll>();
+        if (Camera.main != null)
+        {
+            cameraScroll = Camera.main.GetComponent<CameraScroll>();
+        }
     }
 
     private void Update()
@@ -37,6 +40,11 @@ public class RandomEnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         Camera camera = Camera.main;
+
+        if (camera == null || player == null || enemyPrefab == null)
+        {
+            return;
+        }
 
         Vector3 rightEdge =
             camera.ViewportToWorldPoint(

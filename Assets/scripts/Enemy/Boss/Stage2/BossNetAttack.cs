@@ -25,6 +25,11 @@ public class BossNetAttack : MonoBehaviour
 
         timer = 0f;
 
+        if (netPrefab == null)
+        {
+            return;
+        }
+
         GameObject net = Instantiate(
             netPrefab,
             firePoint != null ? firePoint.position : transform.position,
@@ -36,6 +41,11 @@ public class BossNetAttack : MonoBehaviour
 
     private bool IsOnScreen()
     {
+        if (Camera.main == null)
+        {
+            return false;
+        }
+
         Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
 
         return position.z > 0f &&

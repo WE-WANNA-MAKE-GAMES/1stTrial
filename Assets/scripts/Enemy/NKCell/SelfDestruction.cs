@@ -54,12 +54,12 @@ public class SelfDestruction : MonoBehaviour
 
         hasExploded = true;
 
-        Debug.Log($"NK爆発。Playerとの距離: {Vector2.Distance(transform.position, player.position)}");
-
         if (player != null)
         {
             float distance =
                 Vector2.Distance(transform.position, player.position);
+
+            Debug.Log($"NK爆発。Playerとの距離: {distance}");
 
             if (distance < explosionRange)
             {

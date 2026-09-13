@@ -9,6 +9,11 @@ public class NeutrophilBullet : MonoBehaviour
     {
         transform.localPosition += Vector3.right * speed * Time.deltaTime;
 
+        if (Camera.main == null)
+        {
+            return;
+        }
+
         if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
             Destroy(gameObject);

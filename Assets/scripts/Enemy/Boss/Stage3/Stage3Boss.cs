@@ -40,7 +40,10 @@ public class Stage3Boss : MonoBehaviour
 
         Debug.Log("Stage3 Boss Clear");
 
-        if (GameManager.Instance.CurrentStage >=
+        gameObject.SetActive(false);
+
+        if (GameManager.Instance != null &&
+            GameManager.Instance.CurrentStage >=
             GameManager.Instance.TotalStages)
         {
             GameManager.Instance.GameClear();
@@ -52,6 +55,11 @@ public class Stage3Boss : MonoBehaviour
     }
     private bool IsOnScreen()
     {
+        if (Camera.main == null)
+        {
+            return false;
+        }
+
         Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
 
         return position.z > 0f &&

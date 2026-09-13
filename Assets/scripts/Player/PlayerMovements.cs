@@ -47,6 +47,11 @@ public class PlayerMovements : MonoBehaviour
         controls.Disable();
     }
 
+    private void OnDestroy()
+    {
+        controls.Dispose();
+    }
+
     private void Update()
     {
         moveInput = controls.Player.Move.ReadValue<Vector2>();
@@ -54,7 +59,7 @@ public class PlayerMovements : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (playerKnockback.IsKnockback || isDisabled)
+        if ((playerKnockback != null && playerKnockback.IsKnockback) || isDisabled)
         {
             return;
         }
@@ -63,7 +68,7 @@ public class PlayerMovements : MonoBehaviour
 
         // カメラがスクロールしている間だけ、
         // プレイヤーにもステージの移動速度を加える
-        if (!cameraScroll.IsAtStageEnd)
+        if (cameraScroll != null && !cameraScroll.IsAtStageEnd)
         {
             playerVelocity.x += cameraScroll.ScrollSpeed;
         }
@@ -75,6 +80,11 @@ public class PlayerMovements : MonoBehaviour
     private void ClampToCamera()
     {
         Camera cam = Camera.main;
+
+        if (cam == null)
+        {
+            return;
+        }
 
         Vector3 viewPos = cam.WorldToViewportPoint(transform.position);
 
@@ -93,7 +103,9 @@ public class PlayerMovements : MonoBehaviour
     {
         isDisabled = true;
 
-        float scrollCompensation = cameraScroll.IsAtStageEnd ? 0f : cameraScroll.ScrollSpeed;
+        float scrollCompensation = cameraScroll == null || cameraScroll.IsAtStageEnd
+            ? 0f
+            : cameraScroll.ScrollSpeed;
         rb.linearVelocity = new Vector2(scrollCompensation, 0f);
 
         yield return new WaitForSeconds(duration);
