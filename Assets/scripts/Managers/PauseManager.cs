@@ -9,7 +9,10 @@ public class PauseManager : MonoBehaviour
 
     private void Start()
     {
-        pausePanel.SetActive(false);
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
     }
 
     private void Update()
@@ -32,7 +35,10 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = true;
 
-        pausePanel.SetActive(true);
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(true);
+        }
 
         Time.timeScale = 0f;
     }
@@ -41,7 +47,10 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = false;
 
-        pausePanel.SetActive(false);
+        if (pausePanel != null)
+        {
+            pausePanel.SetActive(false);
+        }
 
         Time.timeScale = 1f;
     }

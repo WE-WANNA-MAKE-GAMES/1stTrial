@@ -48,8 +48,8 @@ MonoBehaviour:
   gameOverPanel: {fileID: 0}
   stageClearPanel: {fileID: 0}
   gameClearPanel: {fileID: 0}
-  totalStages: 3
-  debugMode: 1
+  totalStages: 4
+  debugMode: 0
   debugModeHP: 1000
 --- !u!114 &5044571780824937371
 MonoBehaviour:

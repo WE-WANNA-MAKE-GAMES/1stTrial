@@ -26,6 +26,11 @@ public class NeutrophilShootNETs : MonoBehaviour
         {
             timer = 0f;
 
+            if (bulletPrefab == null || firePoint == null)
+            {
+                return;
+            }
+
             Instantiate(
                 bulletPrefab,
                 firePoint.position,

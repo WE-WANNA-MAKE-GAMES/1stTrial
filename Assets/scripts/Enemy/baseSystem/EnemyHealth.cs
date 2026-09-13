@@ -24,13 +24,19 @@ public class EnemyHealth : MonoBehaviour
         {
             knockback.Knockback(Vector2.right);
         } // Apply knockback effect to the
-        enemyEffect.PlayDamageFlash();  // Trigger the damage flash effect when the enemy takes damage
+        if (enemyEffect != null)
+        {
+            enemyEffect.PlayDamageFlash();
+        }
         Debug.Log("Enemy took damage. Current HP: " + currentHP);   // Debug log to check the current HP after taking damage. Should be deleted at launch.
         if (currentHP <= 0)
         {
             GetComponent<HealthItemDrop>()?.Drop();
             GetComponent<SpeedItemDrop>()?.Drop();
-            enemyEffect.PlayExplosion();  // Trigger the explosion effect when the enemy is destroyed
+            if (enemyEffect != null)
+            {
+                enemyEffect.PlayExplosion();
+            }
             Destroy(gameObject);
         }
     }

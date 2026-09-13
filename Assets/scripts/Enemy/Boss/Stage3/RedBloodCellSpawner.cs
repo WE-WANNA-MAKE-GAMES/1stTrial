@@ -26,6 +26,11 @@ public class RedBloodCellSpawner : MonoBehaviour
 
         timer = 0f;
 
+        if (redBloodCellPrefab == null || spawnPoint == null)
+        {
+            return;
+        }
+
         float randomY = Random.Range(minY, maxY);
 
         spawnPoint.position = new Vector3(spawnPoint.position.x, randomY, spawnPoint.position.z);
@@ -39,6 +44,11 @@ public class RedBloodCellSpawner : MonoBehaviour
 
     private bool IsOnScreen()
     {
+        if (Camera.main == null)
+        {
+            return false;
+        }
+
         Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
 
         return position.z > 0f &&

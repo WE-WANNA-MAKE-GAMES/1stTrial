@@ -13,12 +13,10 @@ public class KupfferSpawner : MonoBehaviour
     [SerializeField]
     private float spawnDistance = 15f;
 
-    [Header("Scroll")]
-
     private bool hasSpawned = false;
 
     private Camera mainCamera;
-    [SerializeField] private Transform world;
+
     private void Awake()
     {
         mainCamera = Camera.main;
@@ -52,8 +50,6 @@ public class KupfferSpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        hasSpawned = true;
-
         if (enemyPrefab == null)
         {
             Debug.LogError(
@@ -64,13 +60,14 @@ public class KupfferSpawner : MonoBehaviour
             return;
         }
 
+        hasSpawned = true;
+
         for (int i = 0; i < spawnCount; i++)
         {
             Instantiate(
                 enemyPrefab,
                 transform.position,
-                Quaternion.identity,
-                world
+                Quaternion.identity
             );
         }
     }

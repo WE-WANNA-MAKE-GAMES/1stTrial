@@ -41,6 +41,11 @@ public class PlayerShoot : MonoBehaviour
         controls.Disable();
     }
 
+    private void OnDestroy()
+    {
+        controls.Dispose();
+    }
+
     private void Update()
     {
         timer += Time.deltaTime;

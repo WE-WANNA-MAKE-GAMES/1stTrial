@@ -40,14 +40,21 @@ public class PlayerHealth : MonoBehaviour
 
         currentHP -= damage;    // Reduce current health by the damage amount
 
-        Vector2 direction =
-            (transform.position - attacker.position).normalized;  // Calculate the direction from the attacker to the player()
+        Vector2 direction = attacker != null
+            ? (transform.position - attacker.position).normalized
+            : Vector2.zero;
 
-        playerKnockback.Knockback(direction);  // Apply knockback effect to the player in the calculated direction
+        if (playerKnockback != null)
+        {
+            playerKnockback.Knockback(direction);
+        }
 
         StartCoroutine(InvincibleTime());  // Start the invincibility coroutine after taking damage
 
-        playerEffect.PlayInvincibleEffect(invincibleTime);  // Play the invincible flash effect
+        if (playerEffect != null)
+        {
+            playerEffect.PlayInvincibleEffect(invincibleTime);
+        }
 
         if (GameManager.Instance != null && GameManager.Instance.IsDebugMode())
         {
@@ -75,7 +82,10 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player has died.");  // Debug log to indicate that the player has died. Should be deleted at launch.
-        GameManager.Instance.GameOver();  // Call the GameOver method from the GameManager to handle game over logic
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.GameOver();
+        }
         Destroy(gameObject);  // Destroy the player game object
     }
 
