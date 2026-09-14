@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KupfferShoot : MonoBehaviour
+public class DetoxShoot : MonoBehaviour
 {
     [SerializeField] private GameObject detoxPrefab;
     [SerializeField] private Transform firePoint;
