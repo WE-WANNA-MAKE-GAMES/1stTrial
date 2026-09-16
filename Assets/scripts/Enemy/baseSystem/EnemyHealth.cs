@@ -7,6 +7,10 @@ public class EnemyHealth : MonoBehaviour
     private float currentHP;  // Current health points of the enemy
     private EnemyEffect enemyEffect; // Reference to the EnemyEffect script for visual feedback
     private EnemyKnockback knockback; // Reference to the EnemyKnockback script for knockback effect
+
+    public float MaxHP => maxHP;
+    public float CurrentHP => Mathf.Max(currentHP, 0f);
+
     void Start()
     {
         currentHP = maxHP;  // Initialize current health to maximum health at the start

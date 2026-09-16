@@ -8,6 +8,10 @@ public class Stage3Boss : MonoBehaviour
     private float timer = 0f;
     private bool isCleared = false;
 
+    public float SurvivalTime => survivalTime;
+    public float RemainingTime => Mathf.Max(survivalTime - timer, 0f);
+    public bool HasStarted => timer > 0f;
+
     private void Update()
     {
         if (isCleared)
