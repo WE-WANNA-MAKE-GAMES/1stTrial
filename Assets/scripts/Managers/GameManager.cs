@@ -18,6 +18,11 @@ namespace Manager
             SetPanelActive(gameOverPanel, false);
             SetPanelActive(stageClearPanel, false);
             SetPanelActive(gameClearPanel, false);
+
+            if (GetComponent<BossStageUI>() == null)
+            {
+                gameObject.AddComponent<BossStageUI>();
+            }
         }
 
         private void Awake()
