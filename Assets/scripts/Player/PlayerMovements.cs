@@ -27,16 +27,21 @@ private float baseMoveSpeed;    private Rigidbody2D rb;
 
     private void OnEnable()
     {
+           if (controls == null)
+    {
+        controls = new PlayerControls();
+    }
         controls.Enable();
     }
 
     private void OnDisable()
     {
-        controls.Disable();
+        controls?.Disable();
     }
 
     private void Update()
     {
+          if (controls == null) return;
         moveInput = controls.Player.Move.ReadValue<Vector2>();
     }
 

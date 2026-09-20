@@ -10,6 +10,8 @@ public class PlayerShoot : MonoBehaviour
     private float timer = 0f;
 
     private PlayerControls controls;
+    private PlayerPiercing playerPiercing;
+    private PlayerSpreadShot playerSpreadShot;
 
     private void Awake()
     {
@@ -19,20 +21,29 @@ public class PlayerShoot : MonoBehaviour
         {
             scrollRoot = scrollRootObject.transform;
         }
+
+        playerPiercing = GetComponent<PlayerPiercing>();
+        playerSpreadShot = GetComponent<PlayerSpreadShot>();
     }
 
-    private void OnEnable()
+   private void OnEnable()
+{
+    if (controls == null)
     {
-        controls.Enable();
+        controls = new PlayerControls();
     }
 
-    private void OnDisable()
-    {
-        controls.Disable();
-    }
+    controls.Enable();
+}
+
+private void OnDisable()
+{
+    controls?.Disable();
+}
 
     private void Update()
     {
+        if (controls == null) return;
         timer += Time.deltaTime;
 
         if (controls.Player.Shoot.IsPressed() &&
@@ -40,12 +51,40 @@ public class PlayerShoot : MonoBehaviour
         {
             timer = 0f;
 
-            Instantiate(
-                bulletPrefab,
-                firePoint.position,
-                Quaternion.identity,
-                scrollRoot
-            );
+  if (playerSpreadShot != null && playerSpreadShot.IsActive)
+{
+    ShootAtAngles(-15f, 0f, 15f);
+}
+else
+{
+    ShootAtAngles(0f);
+}
+    }
+}
+private void ShootAtAngles(params float[] angles)
+{
+    foreach (float angle in angles)
+    {
+        Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+
+        GameObject bulletObject = Instantiate(
+            bulletPrefab,
+            firePoint.position,
+            rotation,
+            scrollRoot
+        );
+
+        PlayerBullet bullet = bulletObject.GetComponent<PlayerBullet>();
+
+        if (bullet != null)
+        {
+            int penetration = playerPiercing != null
+                ? playerPiercing.AdditionalPenetrations
+                : 0;
+
+            bullet.Initialize(penetration);
         }
     }
 }
+}
+
