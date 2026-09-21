@@ -3,44 +3,58 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField]
-    private float maxHP = 1;  // Maximum health points for the enemy
-    private float currentHP;  // Current health points of the enemy
-    private EnemyEffect enemyEffect; // Reference to the EnemyEffect script for visual feedback
-    private EnemyKnockback knockback; // Reference to the EnemyKnockback script for knockback effect
+    private float maxHP = 1f;
+
+    private float currentHP;
+
+    private EnemyEffect enemyEffect;
+    private EnemyKnockback knockback;
 
     public float MaxHP => maxHP;
     public float CurrentHP => Mathf.Max(currentHP, 0f);
 
-    void Start()
+    private void Start()
     {
-        currentHP = maxHP;  // Initialize current health to maximum health at the start
+        currentHP = maxHP;
     }
 
     private void Awake()
     {
-        enemyEffect = GetComponent<EnemyEffect>(); // Get the EnemyEffect component attached to the enemy
-        knockback = GetComponent<EnemyKnockback>(); // Get the EnemyKnockback component attached to the enemy
+        enemyEffect = GetComponent<EnemyEffect>();
+        knockback = GetComponent<EnemyKnockback>();
     }
+
     public void TakeDamage(float damage)
     {
-        currentHP -= damage;    // Reduce current health by the damage amount
-        if (knockback != null && knockback.isActiveAndEnabled)
+        currentHP -= damage;
+
+        if (knockback != null &&
+            knockback.isActiveAndEnabled)
         {
             knockback.Knockback(Vector2.right);
-        } // Apply knockback effect to the
+        }
+
         if (enemyEffect != null)
         {
             enemyEffect.PlayDamageFlash();
         }
-        Debug.Log("Enemy took damage. Current HP: " + currentHP);   // Debug log to check the current HP after taking damage. Should be deleted at launch.
+
+        Debug.Log(
+            "Enemy took damage. Current HP: " + currentHP
+        );
+
         if (currentHP <= 0)
         {
             GetComponent<HealthItemDrop>()?.Drop();
             GetComponent<SpeedItemDrop>()?.Drop();
+            GetComponent<PiercingItemDrop>()?.Drop();
+            GetComponent<SpreadShotItemDrop>()?.Drop();
+
             if (enemyEffect != null)
             {
                 enemyEffect.PlayExplosion();
             }
+
             Destroy(gameObject);
         }
     }

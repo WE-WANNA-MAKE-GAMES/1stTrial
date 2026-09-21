@@ -92,7 +92,8 @@ GameObject:
   - component: {fileID: 7133223026250145608}
   - component: {fileID: 7630033193625869350}
   - component: {fileID: 4980230715341754123}
-  - component: {fileID: -7873683025019611181}
+  - component: {fileID: -3108576219195375999}
+  - component: {fileID: -5942064275589661885}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -289,7 +290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDisabledEffect
   disabledColor: {r: 0.9, g: 0.9, b: 1, a: 0.6}
---- !u!114 &-7873683025019611181
+--- !u!114 &-3108576219195375999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,10 +299,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 4507696500485845030}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b071459d6354464e802a69b86320b85, type: 3}
+  m_Script: {fileID: 11500000, guid: 53a33d7bb2b877c4fa745319976898fa, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
-  attackPower: 1
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPiercing
+  maxAdditionalPenetrations: 2
+--- !u!114 &-5942064275589661885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4507696500485845030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551a2b8790a92f0419f620521dc0df6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpreadShot
 --- !u!1 &4646461741116952087
 GameObject:
   m_ObjectHideFlags: 0
