@@ -12,6 +12,7 @@ Folloings are some example
 * fix: ジャンプバグ修正
 * refactor: EnemyManagerを整理
 * docs: README更新
+* minor fix:その他適当なやつ
 
 ## Rules
 * mainへ直接push禁止

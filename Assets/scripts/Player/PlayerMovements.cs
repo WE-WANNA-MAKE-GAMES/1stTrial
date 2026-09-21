@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using Manager;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovements : MonoBehaviour
@@ -16,6 +17,9 @@ private float baseMoveSpeed;    private Rigidbody2D rb;
     private PlayerDisabledEffect playerDisabledEffect;
     [SerializeField] private CameraScroll cameraScroll;
 
+    private Coroutine speedBoostCoroutine;
+    private float baseMoveSpeed;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -23,6 +27,15 @@ private float baseMoveSpeed;    private Rigidbody2D rb;
         playerKnockback = GetComponent<PlayerKnockback>();
         playerDisabledEffect = GetComponent<PlayerDisabledEffect>();
         baseMoveSpeed = moveSpeed;
+    }
+
+    private float GetMoveSpeed()
+    {
+        if (GameManager.Instance != null && GameManager.Instance.IsDebugMode())
+        {
+            return GameManager.Instance.DebugModeSpeed;
+        }
+        return moveSpeed;
     }
 
     private void OnEnable()
@@ -39,6 +52,11 @@ private float baseMoveSpeed;    private Rigidbody2D rb;
         controls?.Disable();
     }
 
+    private void OnDestroy()
+    {
+        controls.Dispose();
+    }
+
     private void Update()
     {
           if (controls == null) return;
@@ -47,16 +65,16 @@ private float baseMoveSpeed;    private Rigidbody2D rb;
 
     private void FixedUpdate()
     {
-        if (playerKnockback.IsKnockback || isDisabled)
+        if ((playerKnockback != null && playerKnockback.IsKnockback) || isDisabled)
         {
             return;
         }
 
-        Vector2 playerVelocity = moveInput.normalized * moveSpeed;
+        Vector2 playerVelocity = moveInput.normalized * GetMoveSpeed();
 
         // カメラがスクロールしている間だけ、
         // プレイヤーにもステージの移動速度を加える
-        if (!cameraScroll.IsAtStageEnd)
+        if (cameraScroll != null && !cameraScroll.IsAtStageEnd)
         {
             playerVelocity.x += cameraScroll.ScrollSpeed;
         }
@@ -68,6 +86,11 @@ private float baseMoveSpeed;    private Rigidbody2D rb;
     private void ClampToCamera()
     {
         Camera cam = Camera.main;
+
+        if (cam == null)
+        {
+            return;
+        }
 
         Vector3 viewPos = cam.WorldToViewportPoint(transform.position);
 
@@ -86,29 +109,32 @@ private float baseMoveSpeed;    private Rigidbody2D rb;
     {
         isDisabled = true;
 
-        float scrollCompensation = cameraScroll.IsAtStageEnd ? 0f : cameraScroll.ScrollSpeed;
+        float scrollCompensation = cameraScroll == null || cameraScroll.IsAtStageEnd
+            ? 0f
+            : cameraScroll.ScrollSpeed;
         rb.linearVelocity = new Vector2(scrollCompensation, 0f);
 
         yield return new WaitForSeconds(duration);
 
         isDisabled = false;
     }
+
     public void ApplySpeedBoost(float multiplier, float duration)
-{
-    if (speedBoostCoroutine != null)
     {
-        StopCoroutine(speedBoostCoroutine);
+        if (speedBoostCoroutine != null)
+        {
+            StopCoroutine(speedBoostCoroutine);
+        }
+
+        moveSpeed = baseMoveSpeed * multiplier;
+        speedBoostCoroutine = StartCoroutine(SpeedBoostDuration(duration));
     }
 
-    moveSpeed = baseMoveSpeed * multiplier;
-    speedBoostCoroutine = StartCoroutine(SpeedBoostDuration(duration));
-}
+    private IEnumerator SpeedBoostDuration(float duration)
+    {
+        yield return new WaitForSeconds(duration);
 
-private IEnumerator SpeedBoostDuration(float duration)
-{
-    yield return new WaitForSeconds(duration);
-
-    moveSpeed = baseMoveSpeed;
-    speedBoostCoroutine = null;
-}
+        moveSpeed = baseMoveSpeed;
+        speedBoostCoroutine = null;
+    }
 }

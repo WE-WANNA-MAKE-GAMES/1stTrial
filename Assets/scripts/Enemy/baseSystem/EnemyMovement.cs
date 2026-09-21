@@ -11,6 +11,11 @@ public class EnemyMovement : MonoBehaviour
     {
         transform.localPosition += Vector3.left * moveSpeed * Time.deltaTime;
 
+        if (Camera.main == null)
+        {
+            return;
+        }
+
         if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
             Destroy(gameObject);

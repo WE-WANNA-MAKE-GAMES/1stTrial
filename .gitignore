@@ -8,6 +8,9 @@
 UserSettings/
 MemoryCaptures/
 
+# sensitive files
+.env.local
+
 # Visual Studio / VS Code
 .vscode/
 .vs/

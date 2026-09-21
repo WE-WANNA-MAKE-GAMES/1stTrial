@@ -14,6 +14,18 @@ public class Goal : MonoBehaviour
         if (boss != null)
             return;
 
-        GameManager.Instance.GameClear();
+        if (GameManager.Instance == null)
+        {
+            return;
+        }
+
+        if (GameManager.Instance.CurrentStage >= GameManager.Instance.TotalStages)
+        {
+            GameManager.Instance.GameClear();
+        }
+        else
+        {
+            GameManager.Instance.StageClear();
+        }
     }
 }

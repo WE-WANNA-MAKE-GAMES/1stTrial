@@ -1,0 +1,73 @@
+using UnityEngine;
+using Manager;
+
+public class Stage3Boss : MonoBehaviour
+{
+    [SerializeField] private float survivalTime = 30f;
+
+    private float timer = 0f;
+    private bool isCleared = false;
+
+    public float SurvivalTime => survivalTime;
+    public float RemainingTime => Mathf.Max(survivalTime - timer, 0f);
+    public bool HasStarted => timer > 0f;
+
+    private void Update()
+    {
+        if (isCleared)
+        {
+            return;
+        }
+
+        if (!IsOnScreen())
+        {
+            timer = 0f;
+            return;
+        }
+
+        timer += Time.deltaTime;
+
+        if (timer >= survivalTime)
+        {
+            ClearBoss();
+        }
+    }
+
+    private void ClearBoss()
+    {
+        if (isCleared)
+        {
+            return;
+        }
+
+        isCleared = true;
+
+        Debug.Log("Stage3 Boss Clear");
+
+        gameObject.SetActive(false);
+
+        if (GameManager.Instance != null &&
+            GameManager.Instance.CurrentStage >=
+            GameManager.Instance.TotalStages)
+        {
+            GameManager.Instance.GameClear();
+        }
+        else
+        {
+            GameManager.Instance.StageClear();
+        }
+    }
+    private bool IsOnScreen()
+    {
+        if (Camera.main == null)
+        {
+            return false;
+        }
+
+        Vector3 position = Camera.main.WorldToViewportPoint(transform.position);
+
+        return position.z > 0f &&
+            position.x >= 0f && position.x <= 1f &&
+            position.y >= 0f && position.y <= 1f;
+    }
+}

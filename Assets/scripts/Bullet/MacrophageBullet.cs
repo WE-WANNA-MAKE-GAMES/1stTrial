@@ -21,7 +21,8 @@ public class MacrophageBullet : MonoBehaviour
         // vector to localPosition also inherits scroll and makes rightward shots faster.
         transform.localPosition += (Vector3)(direction * speed * Time.deltaTime);
 
-        if (Mathf.Abs(transform.position.x - Camera.main.transform.position.x) > destroyDistance)
+        if (Camera.main != null &&
+            Mathf.Abs(transform.position.x - Camera.main.transform.position.x) > destroyDistance)
         {
             Destroy(gameObject);
         }

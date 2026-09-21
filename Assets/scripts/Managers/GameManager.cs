@@ -10,13 +10,19 @@ namespace Manager
         [SerializeField] private GameObject gameOverPanel;
         [SerializeField] private GameObject stageClearPanel;
         [SerializeField] private GameObject gameClearPanel;
-        [SerializeField] private int totalStages = 3;
+        [SerializeField] private int totalStages = 4;
 
         private void Start()
         {
-            gameOverPanel.SetActive(false);
-            stageClearPanel.SetActive(false);
-            gameClearPanel.SetActive(false);
+            Time.timeScale = 1f;
+            SetPanelActive(gameOverPanel, false);
+            SetPanelActive(stageClearPanel, false);
+            SetPanelActive(gameClearPanel, false);
+
+            if (GetComponent<BossStageUI>() == null)
+            {
+                gameObject.AddComponent<BossStageUI>();
+            }
         }
 
         private void Awake()
@@ -65,7 +71,7 @@ namespace Manager
         {
             Debug.Log("Game Over");
             Time.timeScale = 0f;
-            gameOverPanel.SetActive(true);
+            SetPanelActive(gameOverPanel, true);
         }
 
         //*==========================
@@ -75,7 +81,7 @@ namespace Manager
         {
             Debug.Log("Stage Clear");
             Time.timeScale = 0f;
-            stageClearPanel.SetActive(true);
+            SetPanelActive(stageClearPanel, true);
         }
 
         //*==========================
@@ -85,7 +91,15 @@ namespace Manager
         {
             Debug.Log("Game Clear");
             Time.timeScale = 0f;
-            gameClearPanel.SetActive(true);
+            SetPanelActive(gameClearPanel, true);
+        }
+
+        private void SetPanelActive(GameObject panel, bool isActive)
+        {
+            if (panel != null)
+            {
+                panel.SetActive(isActive);
+            }
         }
 
         //*==========================
@@ -148,6 +162,25 @@ namespace Manager
         {
             Time.timeScale = 1f;
             SceneManager.LoadScene("Title"); //Titleに戻る
+        }
+
+        //*==========================
+        //* デバッグモード
+        //*==========================
+        [Header("Debug")]
+        [SerializeField] private bool debugMode = false;
+        [SerializeField] private float debugModeHP = 1000f;
+        [SerializeField] private float debugModeAttackPower = 100f;
+        [SerializeField] private float debugModeSpeed = 15f;
+        [SerializeField] private float debugModeShootInterval = 0.05f;
+        public float DebugModeHP => debugModeHP;
+        public float DebugModeAttackPower => debugModeAttackPower;
+        public float DebugModeSpeed => debugModeSpeed;
+        public float DebugModeShootInterval => debugModeShootInterval;
+
+        public bool IsDebugMode()
+        {
+            return debugMode;
         }
     }
 }

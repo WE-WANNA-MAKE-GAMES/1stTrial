@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelfDestruction
   selfDestructionTime: 3
-  explosionRange: 2
+  explosionRange: 1.5
   damage: 3
 --- !u!114 &8425848390406698553
 MonoBehaviour:

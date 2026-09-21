@@ -10,9 +10,23 @@ public class RandomEnemySpawner : MonoBehaviour
     [SerializeField] private Transform player; // Reference to the player transform to determine spawn position
     [SerializeField] private float spawnOffsetX = 5f; // Distance from the player at which enemies will spawn
     [SerializeField] private Transform scrollRoot;
+    private CameraScroll cameraScroll;
+
+    private void Awake()
+    {
+        if (Camera.main != null)
+        {
+            cameraScroll = Camera.main.GetComponent<CameraScroll>();
+        }
+    }
 
     private void Update()
     {
+        if(cameraScroll != null && cameraScroll.IsAtStageEnd)
+        {
+            return; // Exit the method if the camera is not scrolling
+        }
+
         timer += Time.deltaTime;    // Increment the timer by the time elapsed since the last frame
 
         if (timer >= spawnInterval)
@@ -26,6 +40,11 @@ public class RandomEnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         Camera camera = Camera.main;
+
+        if (camera == null || player == null || enemyPrefab == null)
+        {
+            return;
+        }
 
         Vector3 rightEdge =
             camera.ViewportToWorldPoint(

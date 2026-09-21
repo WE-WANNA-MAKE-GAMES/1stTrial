@@ -17,6 +17,11 @@ public class BossClear : MonoBehaviour
     private IEnumerator ClearAfterDelay()
     {
         yield return new WaitForSeconds(clearDelay);
+        if (GameManager.Instance == null)
+        {
+            yield break;
+        }
+
         if (GameManager.Instance.CurrentStage >= GameManager.Instance.TotalStages)
         {
             GameManager.Instance.GameClear();

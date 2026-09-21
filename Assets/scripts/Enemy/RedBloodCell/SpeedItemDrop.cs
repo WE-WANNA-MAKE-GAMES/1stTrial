@@ -12,5 +12,6 @@ public class SpeedItemDrop : MonoBehaviour
         if (speedItemPrefab == null || Random.value > dropChance) return;
 
         Instantiate(speedItemPrefab, transform.position, Quaternion.identity);
+        Debug.Log($"Speed item dropped at position: {transform.position}");
     }
 }

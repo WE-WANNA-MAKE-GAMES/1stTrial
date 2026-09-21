@@ -10,7 +10,10 @@ public class EnemyEffect : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color;
+        }
     }
     public void PlayDamageFlash()
     {
@@ -20,6 +23,11 @@ public class EnemyEffect : MonoBehaviour
     private IEnumerator DamageFlash()
     {
         // Change the sprite color to red
+        if (spriteRenderer == null)
+        {
+            yield break;
+        }
+
         spriteRenderer.color = Color.red;
 
         // Wait for a short duration (e.g., 0.1 seconds)
@@ -31,10 +39,13 @@ public class EnemyEffect : MonoBehaviour
     //* 敵の爆発エフェクト
     public void PlayExplosion()
     {
-        Instantiate(
-            explosionPrefab,
-            transform.position,
-            Quaternion.identity
-        );
+        if (explosionPrefab != null)
+        {
+            Instantiate(
+                explosionPrefab,
+                transform.position,
+                Quaternion.identity
+            );
+        }
     }
 }

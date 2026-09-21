@@ -8,7 +8,7 @@ public class HealthRecoveryItem : MonoBehaviour
     {
         PlayerHealth playerHealth = other.GetComponentInParent<PlayerHealth>();
 
-        if (playerHealth == null) return;
+        if (playerHealth == null) {return;}
 
         playerHealth.Heal(healAmount);
         Destroy(gameObject);

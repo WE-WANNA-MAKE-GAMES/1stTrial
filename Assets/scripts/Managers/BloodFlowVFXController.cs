@@ -12,6 +12,9 @@ public class BloodFlowVFXController : MonoBehaviour
 
     private void Start()
     {
-        visualEffect.Play();
+        if (visualEffect != null)
+        {
+            visualEffect.Play();
+        }
     }
 }
