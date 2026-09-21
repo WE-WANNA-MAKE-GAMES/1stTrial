@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
@@ -6,6 +7,17 @@ public class PlayerBullet : MonoBehaviour
     public float damage = 1f;
 
     [SerializeField] private float destroyDistance = 15f;
+    [SerializeField] private float lifeTime = 2f;
+
+    private int remainingPenetrations;
+
+    private readonly HashSet<EntityId> hitEnemyIds = new();
+
+    public void Initialize(int additionalPenetrations)
+    {
+        remainingPenetrations =
+            Mathf.Max(0, additionalPenetrations);
+    }
 
     private void Start()
     {
@@ -16,12 +28,14 @@ public class PlayerBullet : MonoBehaviour
         {
             damage = playerAttack.AttackPower;
         }
+
+        Destroy(gameObject, lifeTime);
     }
 
     private void Update()
     {
-        transform.localPosition +=
-            Vector3.right * speed * Time.deltaTime;
+        transform.position +=
+            transform.right * speed * Time.deltaTime;
 
         if (Camera.main != null &&
             transform.position.x <
@@ -41,16 +55,36 @@ public class PlayerBullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             EnemyHealth enemyHealth =
-                other.GetComponent<EnemyHealth>();
+                other.GetComponentInParent<EnemyHealth>();
 
-            if (enemyHealth != null)
+            if (enemyHealth == null)
             {
-                enemyHealth.TakeDamage(damage);
+                return;
+            }
+
+            EntityId enemyId =
+                enemyHealth.GetEntityId();
+
+            // 同じ敵には一度しか当たらない
+            if (!hitEnemyIds.Add(enemyId))
+            {
+                return;
+            }
+
+            enemyHealth.TakeDamage(damage);
+
+            // 貫通回数が残っているなら弾は消さない
+            if (remainingPenetrations > 0)
+            {
+                remainingPenetrations--;
+                return;
             }
 
             Destroy(gameObject);
         }
-        else if (other.CompareTag("Bullet"))
+        else if (
+            other.CompareTag("Bullet") &&
+            other.GetComponent<PlayerBullet>() == null)
         {
             Destroy(other.gameObject);
             Destroy(gameObject);

@@ -7,7 +7,8 @@ using Manager;
 public class PlayerMovements : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
-    private Rigidbody2D rb;
+    private Coroutine speedBoostCoroutine;
+private float baseMoveSpeed;    private Rigidbody2D rb;
     private PlayerControls controls;
     private Vector2 moveInput;
     private PlayerKnockback playerKnockback;
@@ -39,12 +40,16 @@ public class PlayerMovements : MonoBehaviour
 
     private void OnEnable()
     {
+           if (controls == null)
+    {
+        controls = new PlayerControls();
+    }
         controls.Enable();
     }
 
     private void OnDisable()
     {
-        controls.Disable();
+        controls?.Disable();
     }
 
     private void OnDestroy()
@@ -54,6 +59,7 @@ public class PlayerMovements : MonoBehaviour
 
     private void Update()
     {
+          if (controls == null) return;
         moveInput = controls.Player.Move.ReadValue<Vector2>();
     }
 
