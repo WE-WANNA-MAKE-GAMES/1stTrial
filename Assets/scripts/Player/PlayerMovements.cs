@@ -8,7 +8,8 @@ public class PlayerMovements : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 10f;
     private Coroutine speedBoostCoroutine;
-private float baseMoveSpeed;    private Rigidbody2D rb;
+    private float baseMoveSpeed;
+    private Rigidbody2D rb;
     private PlayerControls controls;
     private Vector2 moveInput;
     private PlayerKnockback playerKnockback;
@@ -16,9 +17,6 @@ private float baseMoveSpeed;    private Rigidbody2D rb;
     private bool isDisabled = false;
     private PlayerDisabledEffect playerDisabledEffect;
     [SerializeField] private CameraScroll cameraScroll;
-
-    private Coroutine speedBoostCoroutine;
-    private float baseMoveSpeed;
 
     private void Awake()
     {
@@ -40,10 +38,10 @@ private float baseMoveSpeed;    private Rigidbody2D rb;
 
     private void OnEnable()
     {
-           if (controls == null)
-    {
-        controls = new PlayerControls();
-    }
+        if (controls == null)
+        {
+            controls = new PlayerControls();
+        }
         controls.Enable();
     }
 
@@ -59,7 +57,7 @@ private float baseMoveSpeed;    private Rigidbody2D rb;
 
     private void Update()
     {
-          if (controls == null) return;
+        if (controls == null) return;
         moveInput = controls.Player.Move.ReadValue<Vector2>();
     }
 
