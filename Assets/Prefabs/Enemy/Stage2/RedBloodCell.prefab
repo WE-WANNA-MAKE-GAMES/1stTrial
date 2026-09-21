@@ -332,4 +332,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthItemDrop
   healthItemPrefab: {fileID: 2392991008513031520, guid: 643d5fff5e457f944a563603516be0d4, type: 3}
-  dropChance: 0.74
+  dropChance: 0.72
