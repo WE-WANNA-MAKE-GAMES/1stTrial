@@ -7,11 +7,15 @@ public class MacrophageShoot : MonoBehaviour
     [SerializeField] private Transform player;
 
     [SerializeField] private float fireInterval = 0.2f;
+    [SerializeField] private float initialFireDelayMin = 0f;
+    [SerializeField] private float initialFireDelayMax = 2f;
     private Transform scrollRoot;
     private float timer = 0f;
 
     private void Awake()
     {
+        timer = Random.Range(initialFireDelayMin, initialFireDelayMax);
+
         if (player == null)
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -50,7 +54,7 @@ public class MacrophageShoot : MonoBehaviour
         timer += Time.deltaTime;
 
         if (/*controls.Player.Shoot.IsPressed() && これもMacrophageに必要なし*/
-            timer >= fireInterval)
+            timer >= GetFireInterval())
         {
             timer = 0f;
 
@@ -68,5 +72,11 @@ public class MacrophageShoot : MonoBehaviour
                 bulletObject.GetComponent<MacrophageBullet>().SetDirection(direction);
             }
         }
+    }
+
+    private float GetFireInterval()
+    {
+        EnemyBuffReceiver receiver = GetComponent<EnemyBuffReceiver>();
+        return fireInterval / (receiver != null ? receiver.SpeedMultiplier : 1f);
     }
 }

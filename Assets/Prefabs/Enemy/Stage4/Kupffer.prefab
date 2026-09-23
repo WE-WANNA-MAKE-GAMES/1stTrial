@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9150943, g: 0.07338022, b: 0.88025373, a: 1}
+  m_Color: {r: 0.07662869, g: 0.7335006, b: 0.7735849, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -217,7 +217,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1274868487419933144, guid: 216c32c9bfad87e418a69c273bf930f5, type: 3}
   firePoint: {fileID: 150236515875588548}
   player: {fileID: 0}
-  fireInterval: 1.5
+  fireInterval: 3
+  initialFireDelayMin: 0
+  initialFireDelayMax: 2
 --- !u!114 &8601503818759749062
 MonoBehaviour:
   m_ObjectHideFlags: 0

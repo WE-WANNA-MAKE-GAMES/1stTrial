@@ -82,7 +82,7 @@ public class TrackMovement : MonoBehaviour
     {
         // 画面上でのNKの目標速度
         Vector2 targetVelocity =
-            direction * moveSpeed;
+            direction * moveSpeed * GetSpeedMultiplier();
 
         // ScrollRootによる移動速度
         Vector2 scrollVelocity = Vector2.zero;
@@ -102,5 +102,11 @@ public class TrackMovement : MonoBehaviour
 
         transform.localPosition +=
             (Vector3)(localVelocity * Time.deltaTime);
+    }
+
+    private float GetSpeedMultiplier()
+    {
+        EnemyBuffReceiver receiver = GetComponent<EnemyBuffReceiver>();
+        return receiver != null ? receiver.SpeedMultiplier : 1f;
     }
 }

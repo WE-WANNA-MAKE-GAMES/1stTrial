@@ -10,15 +10,21 @@ public class RBCMovement : MonoBehaviour
 
     private void Awake() => moveSpeed = Random.Range(minMoveSpeed, maxMoveSpeed);
 
-    public Vector2 Velocity => Vector2.left * moveSpeed; // 追加
+    public Vector2 Velocity => Vector2.left * GetMoveSpeed();
 
     private void Update()
     {
-        transform.localPosition += Vector3.left * moveSpeed * Time.deltaTime;
+        transform.localPosition += Vector3.left * GetMoveSpeed() * Time.deltaTime;
 
         if (transform.position.x < Camera.main.transform.position.x - destroyDistance)
         {
             Destroy(gameObject);
         }
+    }
+
+    private float GetMoveSpeed()
+    {
+        EnemyBuffReceiver receiver = GetComponent<EnemyBuffReceiver>();
+        return moveSpeed * (receiver != null ? receiver.SpeedMultiplier : 1f);
     }
 }

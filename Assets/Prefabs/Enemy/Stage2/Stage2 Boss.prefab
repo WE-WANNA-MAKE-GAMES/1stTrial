@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: -1006258249049579505}
   - component: {fileID: 6695341651367805429}
   - component: {fileID: 8948253105066604046}
+  - component: {fileID: 6982170369205155594}
+  - component: {fileID: 1435325323938010904}
   m_Layer: 0
   m_Name: Stage2 Boss
   m_TagString: Enemy
@@ -42,6 +44,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5808321627752535839}
+  - {fileID: 8240119392218799081}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5861144545225188320
@@ -230,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff9448f811eb447dbadf80f7d0c4b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  maxHP: 10
+  maxHP: 50
 --- !u!114 &-7887185206859027010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,7 +290,6 @@ MonoBehaviour:
   firePoint: {fileID: 2779359165131347823}
   player: {fileID: 0}
   fireInterval: 1.5
-  scrollRoot: {fileID: 0}
 --- !u!114 &6695341651367805429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +319,68 @@ MonoBehaviour:
   firePoint: {fileID: 2779359165131347823}
   fireInterval: 4
   netScale: 3
+--- !u!114 &6982170369205155594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284833698410674100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5e941a25d5246a2b907bd8d50467ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossShoot
+  bulletPrefab: {fileID: 1274868487419933144, guid: 75a530eef47654beab3ec81a4f201482, type: 3}
+  firePoint: {fileID: 8240119392218799081}
+  fireInterval: 1
+  bulletCount: 5
+  spreadAngle: 60
+--- !u!114 &1435325323938010904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4284833698410674100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22d868071bf84ae6a8aec01afdaccc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Stage2BossMovement
+  moveSpeed: 2
+  moveRange: 2
+--- !u!1 &5471111782109947453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8240119392218799081}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8240119392218799081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5471111782109947453}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2779359165131347823}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5677481757320049447
 GameObject:
   m_ObjectHideFlags: 0

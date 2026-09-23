@@ -5,22 +5,34 @@ public class BossNetAttack : MonoBehaviour
     [SerializeField] private GameObject netPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireInterval = 4f;
+    [SerializeField] private float initialFireDelayMin = 0f;
+    [SerializeField] private float initialFireDelayMax = 2f;
     [SerializeField] private float netScale = 3f;
 
     private float timer;
+    private bool hasStartedAttacking;
 
     private void Update()
     {
         // Bossが画面外なら攻撃しない
         if (!IsOnScreen())
         {
-            timer = 0f;
+            if (!hasStartedAttacking)
+            {
+                timer = 0f;
+            }
             return;
+        }
+
+        if (!hasStartedAttacking)
+        {
+            timer = Random.Range(initialFireDelayMin, initialFireDelayMax);
+            hasStartedAttacking = true;
         }
 
         timer += Time.deltaTime;
 
-        if (timer < fireInterval)
+        if (timer < GetFireInterval())
             return;
 
         timer = 0f;
@@ -37,6 +49,12 @@ public class BossNetAttack : MonoBehaviour
         );
 
         net.transform.localScale *= netScale;
+    }
+
+    private float GetFireInterval()
+    {
+        EnemyBuffReceiver receiver = GetComponent<EnemyBuffReceiver>();
+        return fireInterval / (receiver != null ? receiver.SpeedMultiplier : 1f);
     }
 
     private bool IsOnScreen()

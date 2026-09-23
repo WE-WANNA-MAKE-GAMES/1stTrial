@@ -5,6 +5,8 @@ public class BossShoot : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireInterval = 2f;
+    [SerializeField] private float initialFireDelayMin = 0f;
+    [SerializeField] private float initialFireDelayMax = 2f;
 
     [Header("Shotgun")]
     [SerializeField] private int bulletCount = 7;
@@ -12,6 +14,7 @@ public class BossShoot : MonoBehaviour
 
     private float timer;
     private Transform player;
+    private bool hasStartedShooting;
 
     private void Awake()
     {
@@ -29,13 +32,22 @@ public class BossShoot : MonoBehaviour
         // Bossが画面外なら攻撃しない
         if (!IsOnScreen())
         {
-            timer = 0f;
+            if (!hasStartedShooting)
+            {
+                timer = 0f;
+            }
             return;
+        }
+
+        if (!hasStartedShooting)
+        {
+            timer = Random.Range(initialFireDelayMin, initialFireDelayMax);
+            hasStartedShooting = true;
         }
 
         timer += Time.deltaTime;
 
-        if (timer < fireInterval)
+        if (timer < GetFireInterval())
         {
             return;
         }
@@ -96,6 +108,12 @@ public class BossShoot : MonoBehaviour
                 bossBullet.SetDirection(direction);
             }
         }
+    }
+
+    private float GetFireInterval()
+    {
+        EnemyBuffReceiver receiver = GetComponent<EnemyBuffReceiver>();
+        return fireInterval / (receiver != null ? receiver.SpeedMultiplier : 1f);
     }
 
     private Vector2 RotateVector(

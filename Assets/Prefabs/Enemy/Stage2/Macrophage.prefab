@@ -363,3 +363,5 @@ MonoBehaviour:
   firePoint: {fileID: 5217329337312267725}
   player: {fileID: 0}
   fireInterval: 1.5
+  initialFireDelayMin: 0
+  initialFireDelayMax: 2
