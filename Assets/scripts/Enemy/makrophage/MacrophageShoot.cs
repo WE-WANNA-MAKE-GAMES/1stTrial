@@ -54,7 +54,7 @@ public class MacrophageShoot : MonoBehaviour
         timer += Time.deltaTime;
 
         if (/*controls.Player.Shoot.IsPressed() && これもMacrophageに必要なし*/
-            timer >= fireInterval)
+            timer >= GetFireInterval())
         {
             timer = 0f;
 
@@ -72,5 +72,11 @@ public class MacrophageShoot : MonoBehaviour
                 bulletObject.GetComponent<MacrophageBullet>().SetDirection(direction);
             }
         }
+    }
+
+    private float GetFireInterval()
+    {
+        EnemyBuffReceiver receiver = GetComponent<EnemyBuffReceiver>();
+        return fireInterval / (receiver != null ? receiver.SpeedMultiplier : 1f);
     }
 }

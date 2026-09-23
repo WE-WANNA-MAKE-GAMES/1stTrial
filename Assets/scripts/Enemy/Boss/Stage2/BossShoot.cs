@@ -47,7 +47,7 @@ public class BossShoot : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer < fireInterval)
+        if (timer < GetFireInterval())
         {
             return;
         }
@@ -108,6 +108,12 @@ public class BossShoot : MonoBehaviour
                 bossBullet.SetDirection(direction);
             }
         }
+    }
+
+    private float GetFireInterval()
+    {
+        EnemyBuffReceiver receiver = GetComponent<EnemyBuffReceiver>();
+        return fireInterval / (receiver != null ? receiver.SpeedMultiplier : 1f);
     }
 
     private Vector2 RotateVector(

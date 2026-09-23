@@ -17,7 +17,9 @@ public class MacrophageBullet : MonoBehaviour
 
     void Update()
     {
-        transform.position += (Vector3)(direction * speed * Time.deltaTime);
+        // Aim is in world space. ScrollRoot is a camera child, so adding that
+        // vector to localPosition also inherits scroll and makes rightward shots faster.
+        transform.localPosition += (Vector3)(direction * speed * Time.deltaTime);
 
         if (Camera.main != null &&
             Mathf.Abs(transform.position.x - Camera.main.transform.position.x) > destroyDistance)

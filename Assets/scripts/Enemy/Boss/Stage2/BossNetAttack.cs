@@ -32,7 +32,7 @@ public class BossNetAttack : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer < fireInterval)
+        if (timer < GetFireInterval())
             return;
 
         timer = 0f;
@@ -49,6 +49,12 @@ public class BossNetAttack : MonoBehaviour
         );
 
         net.transform.localScale *= netScale;
+    }
+
+    private float GetFireInterval()
+    {
+        EnemyBuffReceiver receiver = GetComponent<EnemyBuffReceiver>();
+        return fireInterval / (receiver != null ? receiver.SpeedMultiplier : 1f);
     }
 
     private bool IsOnScreen()

@@ -26,7 +26,7 @@ public class NeutrophilShootNETs : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= fireInterval)
+        if (timer >= GetFireInterval())
         {
             timer = 0f;
 
@@ -42,5 +42,11 @@ public class NeutrophilShootNETs : MonoBehaviour
                 scrollRoot
             );
         }
+    }
+
+    private float GetFireInterval()
+    {
+        EnemyBuffReceiver receiver = GetComponent<EnemyBuffReceiver>();
+        return fireInterval / (receiver != null ? receiver.SpeedMultiplier : 1f);
     }
 }
