@@ -7,11 +7,15 @@ public class MacrophageShoot : MonoBehaviour
     [SerializeField] private Transform player;
 
     [SerializeField] private float fireInterval = 0.2f;
+    [SerializeField] private float initialFireDelayMin = 0f;
+    [SerializeField] private float initialFireDelayMax = 2f;
     private Transform scrollRoot;
     private float timer = 0f;
 
     private void Awake()
     {
+        timer = Random.Range(initialFireDelayMin, initialFireDelayMax);
+
         if (player == null)
         {
             GameObject playerObject = GameObject.FindGameObjectWithTag("Player");

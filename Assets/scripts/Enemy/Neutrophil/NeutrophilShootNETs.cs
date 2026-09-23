@@ -6,11 +6,15 @@ public class NeutrophilShootNETs : MonoBehaviour
     [SerializeField] private Transform firePoint;
 
     [SerializeField] private float fireInterval = 0.2f;
+    [SerializeField] private float initialFireDelayMin = 0f;
+    [SerializeField] private float initialFireDelayMax = 2f;
     private float timer = 0f;
     private Transform scrollRoot;
 
     private void Awake()
     {
+        timer = Random.Range(initialFireDelayMin, initialFireDelayMax);
+
         GameObject scrollRootObject = GameObject.FindGameObjectWithTag("ScrollRoot");
         if (scrollRootObject != null)
         {
