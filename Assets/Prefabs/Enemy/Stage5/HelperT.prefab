@@ -82,9 +82,13 @@ GameObject:
   - component: {fileID: 1000000000000000004}
   - component: {fileID: -8658170049098945204}
   - component: {fileID: 1023677953671393579}
+  - component: {fileID: 5146915799616282241}
+  - component: {fileID: -2415120216049840562}
+  - component: {fileID: 8390371729199157919}
+  - component: {fileID: 1253729923546465961}
   m_Layer: 0
   m_Name: HelperT
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,7 +156,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1706135489
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.31287822, g: 0.6922922, b: 0.745283, a: 1}
@@ -188,7 +192,7 @@ MonoBehaviour:
   maxAlarmWaves: 0
   scrollRoot: {fileID: 0}
   spawnRadius: 1.5
-  warningDistance: 8
+  warningDistance: 3
   warningAngle: 75
   forwardAngle: 180
   idleFanColor: {r: 1, g: 0.75, b: 0.1, a: 0.2}
@@ -240,7 +244,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -273,3 +277,57 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5146915799616282241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000000000000000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1498725b279bb4b07ac377a0f5f1164c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyEffect
+  explosionPrefab: {fileID: 3706289601320125170, guid: e29344cc0505d4be5ba6e361534bfbc3, type: 3}
+--- !u!114 &-2415120216049840562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000000000000000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dad1c1720322a48a6807244d99dff9d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
+  moveSpeed: 4
+  destroyDistance: 10
+--- !u!114 &8390371729199157919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000000000000000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ff9448f811eb447dbadf80f7d0c4b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHP: 2
+--- !u!114 &1253729923546465961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000000000000000000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8209dce91b4420d829f6d82532ebc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockback
+  knockbackPower: 5
+  knockbackTime: 0.1

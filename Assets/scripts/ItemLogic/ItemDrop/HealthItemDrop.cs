@@ -10,7 +10,12 @@ public class HealthItemDrop : MonoBehaviour
     {
         if (healthItemPrefab == null || Random.value > dropChance) return;
 
-        Instantiate(healthItemPrefab, transform.position, Quaternion.identity);
-        Debug.Log($"Health item dropped at position: {transform.position}");
+        Instantiate(
+            healthItemPrefab,
+            transform.position,
+            Quaternion.identity
+        );
+        
+        Debug.Log($"Health item dropped at position: {transform.position}");    //Debug用コード　リリース時に削除
     }
 }
