@@ -116,11 +116,7 @@ public class NeuronConnection : MonoBehaviour
         }
 
         EdgeCollider2D result = connectionColliders[index];
-        float scale = Mathf.Max(
-            Mathf.Abs(transform.lossyScale.x),
-            Mathf.Abs(transform.lossyScale.y)
-        );
-        result.edgeRadius = lineWidth * 0.5f / Mathf.Max(scale, 0.0001f);
+        result.edgeRadius = 0.1f;
         result.enabled = true;
         return result;
     }

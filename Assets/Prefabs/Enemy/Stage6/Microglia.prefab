@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757e4ff96d88c42b7964ad57c6bdfcc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MicrogliaMovement
-  moveSpeed: 6
-  stopDistance: 1
+  moveSpeed: 4
+  stopDistance: 0.8
 --- !u!114 &2234567893
 MonoBehaviour:
   m_ObjectHideFlags: 0
