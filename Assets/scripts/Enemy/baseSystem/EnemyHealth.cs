@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    // 以下は既存のダメージ処理
+
     [SerializeField]
     private float maxHP = 1f;
 
@@ -25,7 +27,9 @@ public class EnemyHealth : MonoBehaviour
     }
 
     public void TakeDamage(float damage)
-    {
+    { if (!CanTakeDamage)
+        return;
+
         currentHP -= damage;
 
         if (knockback != null &&
@@ -58,4 +62,5 @@ public class EnemyHealth : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public bool CanTakeDamage { get; set; } = true;
 }
